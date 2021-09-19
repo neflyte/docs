@@ -145,6 +145,7 @@ class Reredirects:
         :param app: The Sphinx Application instance
         """
         self.app = app
+        # TODO: should be done when config-inited event fires
         self.redirects_option: Dict[str,
                                     str] = getattr(app.config,
                                                    OPTION_REDIRECTS)
@@ -168,6 +169,7 @@ class Reredirects:
                 to_be_redirected[source] = target
                 continue
 
+            # TODO: should be done when env-updated event fires
             # wildcarded source, expand to docnames
             expanded_docs = [doc for doc in self.app.env.found_docs
                              if fnmatch(doc, source)]
@@ -188,7 +190,10 @@ class Reredirects:
 
         :param to_be_redirected: A mapping of docnames to targets to create redirect files for
         """
-        for doc, target in status_iterator(to_be_redirected, 'writing redirects...', 'darkgreen',
+        # TODO: can this be handled by the html-collect-pages event?
+        # Yes, however it requires a physical file template to exist
+        #
+        for doc, target in status_iterator(to_be_redirected, 'writing redirects... ', 'darkgreen',
                                            len(to_be_redirected.items())):
             redirect_file_abs = Path(self.app.outdir).joinpath(doc).with_suffix(".html")
             self._create_redirect_file(redirect_file_abs, target)

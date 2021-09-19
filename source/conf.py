@@ -163,20 +163,20 @@ redirects = {
         "https://docs.mattermost.com/configure/configuation-in-mattermost-database.html",
     "administration/branding": "https://docs.mattermost.com/configure/custom-branding-tools.html",
     "administration/config-settings#files": "https://docs.mattermost.com/configure/configuration-settings.html#file-storage",
-    "administration/config-settings#maximum-file-size": 
+    "administration/config-settings#maximum-file-size":
         "https://docs.mattermost.com/configure/configuration-settings.html#maximum-file-size",
-    "administration/config-settings#aggregate-search-indexes": 
+    "administration/config-settings#aggregate-search-indexes":
         "https://docs.mattermost.com/configure/configuration-settings.html#aggregate-search-indexes",
-    "administration/changelog#database-changes-from-v3-4-to-v3-5": 
+    "administration/changelog#database-changes-from-v3-4-to-v3-5":
         "https://docs.mattermost.com/install/self-managed-changelog.html#id41",
-    "administration/config-settings#environment": 
+    "administration/config-settings#environment":
         "https://docs.mattermost.com/configure/configuration-settings.html#environment-variables",
-    "administration/config-settings#site-configuration": 
+    "administration/config-settings#site-configuration":
         "https://docs.mattermost.com/configure/configuration-settings.html#site-configuration",
     "administration/performance-alerting-guide": "https://docs.mattermost.com/scale/performance-monitoring.html",
     "administration/config-settings#policy": "https://docs.mattermost.com/configure/configuration-settings.html#policy",
     "administration/devops-command-center": "https://docs.mattermost.com/guides/incident-collaboration.html",
-    "administration/plugins": "https://developers.mattermost.com/integrate/admin-guide/admin-plugins-beta/", 
+    "administration/plugins": "https://developers.mattermost.com/integrate/admin-guide/admin-plugins-beta/",
     "administration/migrating": "https://docs.mattermost.com/onboard/migrating-to-mattermost.html",
     "administration/user-provisioning": "https://docs.mattermost.com/onboard/user-provisioning-workflows.html",
     "administration/hipchat-migration-guidelines":
@@ -214,9 +214,9 @@ redirects = {
     "cloud/cloud-administration/site-configuration":
         "https://docs.mattermost.com/configure/cloud-site-configuration.html",
     "cloud/cloud-mobile/cloud-app-config": "https://docs.mattermost.com/deploy/mobile-appconfig.html",
-    "deployment/atlassian-integrations": 
+    "deployment/atlassian-integrations":
         "https://docs.mattermost.com/messaging/extending-messaging-with-integrations.html#atlassian-integrations",
-    "deployment/bot-integrations": 
+    "deployment/bot-integrations":
         "https://docs.mattermost.com/messaging/extending-messaging-with-integrations.html#bot-integrations",
     "deployment/admin-roles": "https://docs.mattermost.com/deploy/admin-roles.html",
     "deployment/deployment": "https://docs.mattermost.com/deploy/deployment-overview.html",
@@ -260,7 +260,7 @@ redirects = {
         "https://docs.mattermost.com/onboard/certificate-based-authentication.html",
     "deployment/mobile-app-deployment": "https://docs.mattermost.com/deploy/mobile-overview.html",
     "deployment/deployment#file-store": "https://docs.mattermost.com/deploy/deployment-overview.html#file-store",
-    "deployment/cluster#proxy-server-configuration": 
+    "deployment/cluster#proxy-server-configuration":
         "https://docs.mattermost.com/scale/high-availability-cluster.html#proxy-server-configuration",
     "deployment/cluster#upgrade-guide": "https://docs.mattermost.com/scale/high-availability-cluster.html#upgrade-guide",
     "deployment/mobile-app-deployment": "https://docs.mattermost.com/deploy/mobile-overview.html",
@@ -321,17 +321,17 @@ redirects = {
     "help/getting-started/install-desktop-app":
         "https://docs.mattermost.com/install/installing-mattermost-desktop-app.html",
     "help/getting-started/light-install": "https://docs.mattermost.com/getting-started/light-install.html",
-    "incident-collaboration/playbook-planning": 
+    "incident-collaboration/playbook-planning":
         "https://docs.mattermost.com/incident-collaboration/setting-up-playbooks.html",
-    "incident-collaboration/launching-playbooks": 
+    "incident-collaboration/launching-playbooks":
         "https://docs.mattermost.com/incident-collaboration/running-playbooks.html",
-    "incident-collaboration/review-and-refine": 
+    "incident-collaboration/review-and-refine":
         "https://docs.mattermost.com/incident-collaboration/refining-and-improving.html",
     "incident-collaboration/overview": "https://docs.mattermost.com/playbooks/refining-and-improving.html",
     "incident-collaboration/getting-started": "https://docs.mattermost.com/playbooks/getting-started.html",
     "incident-collaboration/setting-up-playbooks": "https://docs.mattermost.com/playbooks/setting-up-playbooks.html",
     "incident-collaboration/running-playbooks": "https://docs.mattermost.com/playbooks/running-playbooks.html",
-    "incident-collaboration/refining-and-improving": 
+    "incident-collaboration/refining-and-improving":
          "https://docs.mattermost.com/playbooks/refining-and-improving.html",
     "install/requirements": "https://docs.mattermost.com/install/software-hardware-requirements.html",
     "install/install-ubuntu-2004": "https://docs.mattermost.com/install/installing-ubuntu-2004-LTS.html",
@@ -364,7 +364,7 @@ redirects = {
     "integrations/jira": "https://mattermost.gitbook.io/plugin-jira/",
     "integrations/zoom": "https://mattermost.gitbook.io/plugin-zoom/",
     "integrations/net-promoter-score": "https://docs.mattermost.com/manage/user-satisfaction-surveys.html",
-    "mobile/mobile-overview#use-an-emm-provider-with-managed-app-configuration": 
+    "mobile/mobile-overview#use-an-emm-provider-with-managed-app-configuration":
         "https://docs.mattermost.com/deploy/deploy-mobile-apps-using-emm-provider.html",
     "mobile/mobile-hpns": "https://docs.mattermost.com/deploy/mobile-hpns.html",
     "overview/product": "https://docs.mattermost.com/about/product.html",
@@ -375,9 +375,9 @@ redirects = {
     "overview/compliance": "https://docs.mattermost.com/about/certifications-and-compliance.html",
     "overview/faq": "https://docs.mattermost.com/about/frequently-asked-questions.html",
     "overview/architecture": "https://docs.mattermost.com/getting-started/architecture-overview.html",
-    "overview/architecture#database-with-vips": 
+    "overview/architecture#database-with-vips":
         "https://docs.mattermost.com/getting-started/architecture-overview.html#database-with-vips",
-    "overview/architecture#reference-architectures": 
+    "overview/architecture#reference-architectures":
         "https://docs.mattermost.com/getting-started/architecture-overview.html#reference-architectures",
     "process/help-wanted": "https://handbook.mattermost.com/contributors/contributors/help-wanted",
     "process/help-wanted": "https://handbook.mattermost.com/contributors/contributors/ways-to-contribute/help-wanted",
@@ -438,7 +438,7 @@ redirects = {
         "https://handbook.mattermost.com/operations/research-and-development/product/development-process",
     "mobile/mobile-hpns": "https://docs.mattermost.com/deploy/mobile-hpns.html",
     "guides/install-deploy-upgrade-scale": "https://docs.mattermost.com/guides/deployment.html",
-    "guides/setup-onboard-manage-comply.html": "https://docs.mattermost.com/guides/administration.html"  
+    "guides/setup-onboard-manage-comply.html": "https://docs.mattermost.com/guides/administration.html"
 }
 
 # The master toctree document.
@@ -515,9 +515,10 @@ html_context = {
     # Enable the "Edit in GitHub link within the header of each page.
     'display_github': True,
 
-    # Set the following variables to generate the resulting github URL for each page. Format Template:
-    # https://{{github_host|default("github.com") }}
-    # /{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{conf_py_path }}{{ pagename }}{{ suffix }}
+    """
+    Set the following variables to generate the resulting github URL for each page. Format Template:
+    https://{{github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
+    """
     'github_user': 'mattermost',
     'github_repo': 'docs',
     'github_version': 'master/source/',
