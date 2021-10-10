@@ -1,6 +1,10 @@
 Configuration Settings
 ======================
 
+.. redirective::
+
+   administration/config-settings
+
 Mattermost configuration settings are maintained in the ``config.json`` configuration file, located in the ``mattermost/config`` directory. You can modify the configuration file using the System Console, or by using a text editor to modify it directly.
 
 .. important::
@@ -36,10 +40,10 @@ For any setting that is not set in ``config.json`` or in environment variables, 
 
 .. warning::
    Environment variables for Mattermost settings that are set within the active shell will take effect when migrating configuration. For more information, see `Configuration In Database <https://docs.mattermost.com/configure/configuation-in-mattermost-database.html>`_.
-   
+
 .. warning::
    Database connection strings for the database read and search replicas need to be formatted using `URL encoding <https://www.w3schools.com/tags/ref_urlencode.asp>`__. Incorrectly formatted strings may cause some characters to terminate the string early, resulting in issues when the connection string is parsed.
-   
+
 Override Mattermost License File
 --------------------------------
 
@@ -49,7 +53,7 @@ When starting the server, specify the license key as ``MM_LICENSE`` with the con
 
 .. note::
    If ``MM_LICENSE`` is set to a non-empty string, but the license specified is not valid, the Mattermost server will be started without a license.
-   
+
    In a High Availability deployment, using an environment variable to override a server license only affects the individual app server and doesn't propagate to other servers in the cluster.
 
 Load Custom Configuration Defaults
@@ -366,15 +370,15 @@ This setting can only be changed from ``config.json`` file, it cannot be changed
 Data Source
 ^^^^^^^^^^^
 
-This is the connection string to the master database. This setting can only be changed from the ``config.json`` file. 
+This is the connection string to the master database. This setting can only be changed from the ``config.json`` file.
 
 .. note::
-   
+
    To enable SSL, add ``&tls=true`` to your database connection string if your SQL driver supports it. Add ``&tls=skip-verify`` if you use self-signed certificates.
 
 **MySQL Database**
 
-When **DriverName** is set to ``mysql``, using ``collation`` is recommended over using ``charset``. 
+When **DriverName** is set to ``mysql``, using ``collation`` is recommended over using ``charset``.
 
 To specify collation:
 
@@ -395,12 +399,12 @@ If collation is omitted, the default collation, ``utf8mb4_general_ci`` is used:
     }
 
 .. note::
-   
+
    If you're using MySQL 8.0 or later, the default collation has changed to ``utf8mb4_0900_ai_ci``. See our `Database Software Requirements <https://docs.mattermost.com/install/requirements.html#database-software>`__ documentation for details on MySQL 8.0 support.
-   
+
 **PostgreSQL Database**
 
-When **DriverName** is set to ``postgres``, use a connection string in the form ``postgres://mmuser:password@localhost:5432/mattermost_test?sslmode=disable&connect_timeout=10``. 
+When **DriverName** is set to ``postgres``, use a connection string in the form ``postgres://mmuser:password@localhost:5432/mattermost_test?sslmode=disable&connect_timeout=10``.
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"DataSource": ""`` with string input.                                                                                    |
@@ -606,6 +610,10 @@ Enable Elasticsearch for Autocomplete Queries
 File Storage
 ~~~~~~~~~~~~
 
+.. redirective::
+
+   administration/config-settings#files
+
 Mattermost currently supports storing files on the local filesystem and Amazon S3 or S3 compatible containers.
 
 .. note::
@@ -655,9 +663,9 @@ Maximum file size for message attachments and plugins entered in megabytes in th
 Enable Document Search by Content
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Enable users to search the contents of documents attached to messages. 
+Enable users to search the contents of documents attached to messages.
 
-**True**: Documents are searchable by their content.  
+**True**: Documents are searchable by their content.
 
 .. note::
    Document content search results for files shared before upgrading to Mattermost Server 5.35 may be incomplete until an `extraction command is executed using the CLI <https://docs.mattermost.com/manage/command-line-tools.html>`__. If this command is not run, users can search older files based on file name only.
@@ -668,7 +676,7 @@ Enable users to search the contents of documents attached to messages.
 | This feature's ``config.json`` setting is ``"FileSettings.ExtractContent": true`` with options ``true`` and ``false``.          |
 +---------------------------------------------------------------------------------------------------------------------------------+
 
-In addition, you can optionally install `these dependencies <https://github.com/sajari/docconv#dependencies>`__ to extend content searching support to include file formats beyond PDF, DOCX, and ODT, such as DOC, RTF, XML, HTML, and PAGES. If you choose not to install the dependencies, you will see log entries for documents that couldn't be extracted. Any documents that can't be extracted are skipped and logged so that content extraction can proceed. The search support each dependency offers is described below: 
+In addition, you can optionally install `these dependencies <https://github.com/sajari/docconv#dependencies>`__ to extend content searching support to include file formats beyond PDF, DOCX, and ODT, such as DOC, RTF, XML, HTML, and PAGES. If you choose not to install the dependencies, you will see log entries for documents that couldn't be extracted. Any documents that can't be extracted are skipped and logged so that content extraction can proceed. The search support each dependency offers is described below:
 
 - ``tidy``: Used to search the contents of HTML and PAGES documents.
 - ``wv``: Used to search the contents of DOC documents.
@@ -677,10 +685,10 @@ In addition, you can optionally install `these dependencies <https://github.com/
 - ``Justtext``: Used to search HTML documents.
 
 .. note::
-  - Document content search is available in Mattermost Server from v5.35, with mobile support coming soon. 
-  - Searching document contents adds load to your server. 
+  - Document content search is available in Mattermost Server from v5.35, with mobile support coming soon.
+  - Searching document contents adds load to your server.
   - For large deployments, or teams that share many large, text-heavy documents, we recommended you review our `hardware requirements <https://docs.mattermost.com/install/software-hardware-requirements.html#hardware-requirements>`__, and test enabling this feature in a staging environment before enabling it in a production environment.
-  
+
 Enable Searching Content of Documents within ZIP Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -695,8 +703,8 @@ This configuration setting enables users to search the contents of compressed ZI
 +---------------------------------------------------------------------------------------------------------------------------------+
 
 .. note::
-  - Document content search within ZIP files is available in Mattermost Server from v5.35, with mobile support coming soon. 
-  - Searching document contents adds load to your server. 
+  - Document content search within ZIP files is available in Mattermost Server from v5.35, with mobile support coming soon.
+  - Searching document contents adds load to your server.
   - For large deployments, or teams that share many large, text-heavy documents, we recommended you review our `hardware requirements <https://docs.mattermost.com/install/software-hardware-requirements.html#hardware-requirements>`__, and test enabling this feature in a staging environment before enabling it in a production environment.
 
 Amazon S3 Bucket
@@ -1093,8 +1101,8 @@ The encryption uses AES-256 by default, and it is not kept configurable by desig
 
 +--------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"EnableExperimentalGossipEncryption": false`` with options ``true`` and ``false``. |
-+--------------------------------------------------------------------------------------------------------------------------------+    
-    
++--------------------------------------------------------------------------------------------------------------------------------+
+
 Enable Gossip Compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1104,7 +1112,7 @@ Enable Gossip Compression
 
 +--------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"EnableGossipCompression": true`` with options ``true`` and ``false``.             |
-+--------------------------------------------------------------------------------------------------------------------------------+    
++--------------------------------------------------------------------------------------------------------------------------------+
 
 Gossip Port
 ^^^^^^^^^^^
@@ -1228,7 +1236,7 @@ Vary rate limiting by HTTP header field specified (e.g. when configuring Ngnix s
 | This feature's ``config.json`` setting is ``"VaryByHeader": ""`` with string input.                                                                                  |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Advanced Logging 
+Advanced Logging
 ~~~~~~~~~~~~~~~~
 
 *Available in Enterprise Edition E20*
@@ -1268,11 +1276,11 @@ Where:
 - ``audit-cli``: Enables output of legacy CLI calls.
 
 .. Note::
-  - Logs are recorded asynchronously to reduce latency to the caller. 
+  - Logs are recorded asynchronously to reduce latency to the caller.
   - Advanced logging supports hot-reloading of logger configuration.
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| This feature’s ``config.json`` setting is ``LogSettings.AdvancedLoggingConfig`` which can contain a filespec to another config file, a database DSN, or JSON.        |                                                        
+| This feature’s ``config.json`` setting is ``LogSettings.AdvancedLoggingConfig`` which can contain a filespec to another config file, a database DSN, or JSON.        |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Options outlined in `this text file <https://github.com/mattermost/docs/files/5066579/Log.Settings.Options.txt>`__ are described in the following table.
@@ -1378,9 +1386,9 @@ Options outlined in `this text file <https://github.com/mattermost/docs/files/50
 .. Note::
     Filenames for ``AdvancedLoggingConfig`` can contain an absolute filename, a relative filename, or embedded JSON.
 
-See the :download:`Advanced Logging Options Sample JSON ZIP file <../samples/advanced-logging-options-sample-json.zip>` for a sample configuration file. 
+See the :download:`Advanced Logging Options Sample JSON ZIP file <../samples/advanced-logging-options-sample-json.zip>` for a sample configuration file.
 
-Standard Logging 
+Standard Logging
 ~~~~~~~~~~~~~~~~
 
 *Available in all editions*
@@ -1530,7 +1538,7 @@ User sessions are cleared when a user tries to log in. Additionally, a job runs 
 Extend session length with activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Improves user experience by extending sessions and keeping users logged in if they are active in their Mattermost apps. 
+Improves user experience by extending sessions and keeping users logged in if they are active in their Mattermost apps.
 
 **True**: Sessions will be automatically extended when the user is active in their Mattermost client. User sessions will only expire if they are not active in their Mattermost client for the entire duration of the session lengths defined in the fields below.
 
@@ -1813,7 +1821,7 @@ Set the link for the support website.
 App Custom URL Schemes
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Define valid custom URL schemes for redirect links provided by custom-built mobile Mattermost apps. This ensures users are redirected to the custom-built mobile app and not Mattermost's mobile client. 
+Define valid custom URL schemes for redirect links provided by custom-built mobile Mattermost apps. This ensures users are redirected to the custom-built mobile app and not Mattermost's mobile client.
 
 When configured, after OAuth or SAML user authentication is complete, custom URL schemes sent by mobile clients are validated to ensure they don't include default schemes such as ``http`` or ``https``. Mobile users are then redirected back to the mobile app using the custom scheme URL provided by the mobile client. We recommend that you update your mobile client values as well with valid custom URL schemes.
 
@@ -2028,7 +2036,7 @@ Enable Email Notifications
 
 **False**: Disables email notifications for posts. This is useful for developers who may want to skip email setup for faster development. In order to remove the **Preview Mode: Email notifications have not been configured** banner, you should also set **Enable Preview Mode Banner** to ``false``.
 
-If this setting is set to ``false`` and the SMTP server is set up, account related emails (such as password, email, username, user token, MFA, and other authentication related changes) will be sent regardless of this setting. 
+If this setting is set to ``false`` and the SMTP server is set up, account related emails (such as password, email, username, user token, MFA, and other authentication related changes) will be sent regardless of this setting.
 
 Email invitations and account deactivation emails are not affected by this setting.
 
@@ -2055,7 +2063,7 @@ Enable Email Batching
 **True**: Users can select how often to receive email notifications, and multiple notifications within that timeframe will be combined into a single email. Batching will occur at a default interval of 15 minutes, configurable in **Account Settings > Notifications**.
 
 .. note::
-  - Email batching cannot be enabled unless the `SiteURL <https://docs.mattermost.com/administration/config-settings.html#site-url>`__ is configured and the `SMTP Email Server <https://docs.mattermost.com/administration/config-settings.html#smtp-email-server>`__ is configured. 
+  - Email batching cannot be enabled unless the `SiteURL <https://docs.mattermost.com/administration/config-settings.html#site-url>`__ is configured and the `SMTP Email Server <https://docs.mattermost.com/administration/config-settings.html#smtp-email-server>`__ is configured.
   - Email batching in `High Availability mode <https://docs.mattermost.com/administration/config-settings.html#enable-high-availability-mode>`__ is planned but not yet supported.
 
 **False**: If email notifications are enabled in Account Settings, emails will be sent individually for every mention or direct message received.
@@ -2124,9 +2132,9 @@ Push Notification Contents
 
 **Full message content sent in the notification payload**: Selecting **Send full message snippet** sends excerpts from messages triggering notifications with specifics and may include confidential information sent in messages. If your Push Notification Service is outside your firewall, it is HIGHLY RECOMMENDED this option only be used with an "https" protocol to encrypt the connection.
 
-**ID-Only Push Notifications - Full message content fetched from the server on receipt** (*Available in Enterprise Edition E20*): The notification payload relayed through the `Apple Push Notification service <https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1>`_ or `Firebase Cloud Messaging <https://firebase.google.com/docs/cloud-messaging>`_ service contains no message content. Instead it contains a unique message ID used to fetch message content from the server when a push notification is received by a device via a `notification service app extension <https://developer.apple.com/documentation/usernotifications/modifying_content_in_newly_delivered_notifications>`_ on iOS or `an expandable notification pattern <https://developer.android.com/training/notify-user/expanded>`_ on Android. If the server cannot be reached, a generic push notification message is displayed without message content or sender name. 
+**ID-Only Push Notifications - Full message content fetched from the server on receipt** (*Available in Enterprise Edition E20*): The notification payload relayed through the `Apple Push Notification service <https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1>`_ or `Firebase Cloud Messaging <https://firebase.google.com/docs/cloud-messaging>`_ service contains no message content. Instead it contains a unique message ID used to fetch message content from the server when a push notification is received by a device via a `notification service app extension <https://developer.apple.com/documentation/usernotifications/modifying_content_in_newly_delivered_notifications>`_ on iOS or `an expandable notification pattern <https://developer.android.com/training/notify-user/expanded>`_ on Android. If the server cannot be reached, a generic push notification message is displayed without message content or sender name.
 
-For customers who choose to wrap the Mattermost mobile application in a secure container, such as BlackBerry Dynamics, MobileIron, AirWatch or other solutions, the container needs to execute the fetching of message contents from the unique message ID when push notification are received. If the container is unable to execute the fetch, the push notification contents cannot be received by the customer's mobile application without passing the message contents through either the `Apple Push Notification service <https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1>`_ or `Firebase Cloud Messaging <https://firebase.google.com/docs/cloud-messaging>`_ service. 
+For customers who choose to wrap the Mattermost mobile application in a secure container, such as BlackBerry Dynamics, MobileIron, AirWatch or other solutions, the container needs to execute the fetching of message contents from the unique message ID when push notification are received. If the container is unable to execute the fetch, the push notification contents cannot be received by the customer's mobile application without passing the message contents through either the `Apple Push Notification service <https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1>`_ or `Firebase Cloud Messaging <https://firebase.google.com/docs/cloud-messaging>`_ service.
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"PushNotificationContents": "full"`` with options ``"generic_no_channel"``, ``"generic"``, ``"full"``, and ``"id_loaded"`` for the above settings, respectively.    |
@@ -2247,7 +2255,7 @@ Link previews are requested by the server, meaning the Mattermost server must be
 Disable Link Previews for Specific Domains
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Link previews are disabled for this list of comma-separated domains (e.g. “github.com, mattermost.com”). 
+Link previews are disabled for this list of comma-separated domains (e.g. “github.com, mattermost.com”).
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"RestrictLinkPreviews": ""`` with string input.                                                                          |
@@ -2309,9 +2317,9 @@ A list of URL schemes that are used for autolinking in message text. ``http``, `
 Google API Key
 ^^^^^^^^^^^^^^^^
 
-Mattermost offers the ability to embed YouTube videos from URLs shared by end users. 
+Mattermost offers the ability to embed YouTube videos from URLs shared by end users.
 
-Set this key and add YouTube Data API v3 as a service to your key to enable the display of titles for embedded YouTube video previews. Without the key, YouTube previews will still be created based on hyperlinks appearing in messages or comments but they will not show the video title. If Google detects the number of views is exceedingly high, they may throttle embed access. 
+Set this key and add YouTube Data API v3 as a service to your key to enable the display of titles for embedded YouTube video previews. Without the key, YouTube previews will still be created based on hyperlinks appearing in messages or comments but they will not show the video title. If Google detects the number of views is exceedingly high, they may throttle embed access.
 
 Should this occur, you can remove the throttle by registering for a Google Developer Key and entering it in this field following these instructions: https://www.youtube.com/watch?v=Im69kzhpR3I. Your Google Developer Key is used in client-side Javascript.
 
@@ -2388,7 +2396,7 @@ Enable Admin Notices
 
 **True**: System Admins will receive notices about available server upgrades and relevant system administration features. `Learn more <https://about.mattermost.com/default-notices>`_
 
-**False**: System Admins will not receive notices except those that apply to all end users (See ``UserNoticesEnabled``). 
+**False**: System Admins will not receive notices except those that apply to all end users (See ``UserNoticesEnabled``).
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"AdminNoticesEnabled": true`` with options ``true`` and ``false``.                                                       |
@@ -2399,7 +2407,7 @@ Enable End User Notices
 
 **True**: All users will receive notices about available client upgrades and relevant end user features to improve user experience. `Learn more <https://about.mattermost.com/default-notices>`_
 
-**False**: Users will not receive notices about available client upgrades and relevant end user features. 
+**False**: Users will not receive notices about available client upgrades and relevant end user features.
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"UserNoticesEnabled": true`` with options ``true`` and ``false``.                                                        |
@@ -2917,9 +2925,9 @@ The placeholder text that appears in the login field on the login page. Typicall
 Synchronization Interval (minutes)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Set how often Mattermost accounts synchronize attributes with AD/LDAP, in minutes. 
+Set how often Mattermost accounts synchronize attributes with AD/LDAP, in minutes.
 
-When synchronizing, Mattermost queries AD/LDAP for relevant account information and updates Mattermost accounts based on changes to attributes (first name, last name, and nickname). 
+When synchronizing, Mattermost queries AD/LDAP for relevant account information and updates Mattermost accounts based on changes to attributes (first name, last name, and nickname).
 
 When accounts are disabled in AD/LDAP users are made inactive in Mattermost, and their active sessions are revoked once Mattermost synchronizes attributes. To synchronize immediately after disabling an account, use the **AD/LDAP Synchronize Now** button.
 
@@ -3016,7 +3024,7 @@ Enable Synchronizing SAML Accounts With AD/LDAP
 Ignore Guest Users When Synchronizing with AD/LDAP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Available when ``Enable Synchronizing SAML Accounts With AD/LDAP`` is set to ``true``. 
+Available when ``Enable Synchronizing SAML Accounts With AD/LDAP`` is set to ``true``.
 
 **True**: Mattermost ignores Guest Users identified by the Guest Attribute when synchronizing with AD/LDAP on user deactivation and removal. Manage guest deactivation manually via **System Console > Users**. See `documentation <https://about.mattermost.com/default-saml-ldap-sync>`__ to learn more.
 
@@ -4738,7 +4746,7 @@ Experimental Sidebar Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
-   This experimental configuration setting has been deprecated, and the ability to organize channels in the sidebar has been promoted to general availability from Mattermost v5.32. See the `Organizing Your Sidebar <https://docs.mattermost.com/messaging/organizing-your-sidebar.html#customizing-your-sidebar>`__ product documentation for details on customizing the sidebar. 
+   This experimental configuration setting has been deprecated, and the ability to organize channels in the sidebar has been promoted to general availability from Mattermost v5.32. See the `Organizing Your Sidebar <https://docs.mattermost.com/messaging/organizing-your-sidebar.html#customizing-your-sidebar>`__ product documentation for details on customizing the sidebar.
 
 **Disabled**: Users cannot access the experimental channel sidebar feature set.
 
@@ -4831,7 +4839,7 @@ Town Square is Read-Only (Experimental)
 
 .. note::
 
-  This feature will be deprecated in a future release in favor of `channel moderation settings <https://docs.mattermost.com/deployment/advanced-permissions.html#read-only-channels>`_ which allow you to set any channel as read-only, including Town Square 
+  This feature will be deprecated in a future release in favor of `channel moderation settings <https://docs.mattermost.com/deployment/advanced-permissions.html#read-only-channels>`_ which allow you to set any channel as read-only, including Town Square
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"ExperimentalTownSquareIsReadOnly": false`` with options ``true`` and ``false``.                                                 |
@@ -4870,7 +4878,7 @@ Automatically Follow Threads
 
 This setting has been added as a requirement to support `Collapsed Reply Threads <https://docs.mattermost.com/messaging/organizing-conversations.html>`_, and may affect server performance. It is recommended to review our `documentation on hardware requirements <https://docs.mattermost.com/install/requirements.html#hardware-requirements>`_ to ensure your servers are appropriately scaled for the size of your user base.
 
-**True**: Threads a user starts, participates in, or is mentioned in are automatically followed. A new ``Threads`` table is added in the database that tracks threads and thread participants, and a ``ThreadMembership`` table tracks followed threads for each user and the read or unread state of each followed thread.   
+**True**: Threads a user starts, participates in, or is mentioned in are automatically followed. A new ``Threads`` table is added in the database that tracks threads and thread participants, and a ``ThreadMembership`` table tracks followed threads for each user and the read or unread state of each followed thread.
 
 **False**: Threads are not automatically followed and Collapsed Reply Threads cannot be enabled.
 
@@ -4898,9 +4906,9 @@ Data Prefetch
 Enable File Search
 ^^^^^^^^^^^^^^^^^^
 
-This configuration setting enables users to search documents attached to messages by filename. To enable users to search documents by their content, you must also enable the ``ExtractContent`` configuration setting. See our `Enable Document Search by Content <https://docs.mattermost.com/administration/config-settings.html#enable-document-search-by-content>`__ documentation for details. Document content search is available in Mattermost Server from v5.35, with mobile support coming soon. 
+This configuration setting enables users to search documents attached to messages by filename. To enable users to search documents by their content, you must also enable the ``ExtractContent`` configuration setting. See our `Enable Document Search by Content <https://docs.mattermost.com/administration/config-settings.html#enable-document-search-by-content>`__ documentation for details. Document content search is available in Mattermost Server from v5.35, with mobile support coming soon.
 
-**True**: Supported document types are searchable by their filename. 
+**True**: Supported document types are searchable by their filename.
 
 **False**: File-based searches are disabled.
 
@@ -5599,7 +5607,7 @@ Send log records to multiple targets:
 - Multiple syslogs
 - Multiple TCP sockets
 
-Allow any combination of local file, syslog, and TCP socket targets. 
+Allow any combination of local file, syslog, and TCP socket targets.
 
 File target supports rotation and compression triggered by size and/or duration. Syslog target supports local and remote syslog servers, with or without TLS transport. TCP socket target can be configured with an IP address or domain name, port, and optional TLS certificate.
 
@@ -5619,7 +5627,7 @@ This setting applies to the new sidebar only. You must disable the `Enable Legac
 
 **Default Off**: Disables the unread channels sidebar section for all users by default. Users can enable it in **Account Settings > Sidebar > Group unread channels separately**.
 
-**Default On**: Enables the unread channels sidebar section for all users by default. Users can disable it in **Account Settings > Sidebar > Group unread channels separately**. 
+**Default On**: Enables the unread channels sidebar section for all users by default. Users can disable it in **Account Settings > Sidebar > Group unread channels separately**.
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"ExperimentalGroupUnreadChannels": "default_off"`` with options ``"default_off"`` and ``"default_on"``.                                        |
@@ -5888,7 +5896,7 @@ Prefix on the Elasticsearch index name. Enables the use of Mattermost Elasticsea
 
 .. note::
   When this setting is used, all Elasticsearch indexes created by Mattermost are given this prefix. You can set different prefixes so that multiple Mattermost deployments can share an Elasticsearch cluster without the index names colliding.
-  
+
 Live Indexing Batch Size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -5931,10 +5939,10 @@ Bleve Settings (Experimental)
 Index Dir
 ^^^^^^^^^^
 
-Directory path to use for storing bleve indexes. 
+Directory path to use for storing bleve indexes.
 
 .. tip::
-   
+
    The bleve index directory path isn't required to exist within the ``mattermost`` directory. When it exists outside of the ``mattermost`` directory, no  additional steps are needed to preserve or reindex these files as part of a Mattermost upgrade. See our `Upgrading Mattermost Server <https://docs.mattermost.com/upgrade/upgrading-mattermost-server.html>`__ documentation for details.
 
 +-----------------------------------------------------------------------------------------------------------+
@@ -6123,7 +6131,7 @@ Shared Channels (Experimental)
 
 +---------------------------------------------------------------------------------------------------------------------------------+
 | This feature's ``config.json`` setting is ``"EnableSharedChannels": false`` with options ``true`` and ``false``.                |
-+---------------------------------------------------------------------------------------------------------------------------------+ 
++---------------------------------------------------------------------------------------------------------------------------------+
 
 Deprecated Configuration Settings
 -----------------------------------
@@ -6133,8 +6141,8 @@ Policy
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
-  
+.. note::
+
    Permission policy settings are available in Enterprise Edition E10 and E20. From v5.0, these settings are found in the `Advanced Permissions <https://docs.mattermost.com/deployment/advanced-permissions.html>`__ page instead of configuration settings.
 
 Enable sending team invites from
@@ -6142,7 +6150,7 @@ Enable sending team invites from
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6163,7 +6171,7 @@ Enable public channel creation for
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6184,7 +6192,7 @@ Enable public channel renaming for
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6207,7 +6215,7 @@ Enable public channel deletion for
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6230,7 +6238,7 @@ Enable private channel creation for
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6251,7 +6259,7 @@ Enable private channel renaming for
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6274,7 +6282,7 @@ Enable managing of private channel members for
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6297,7 +6305,7 @@ Enable private channel deletion for
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6320,7 +6328,7 @@ Allow which users to delete messages
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 
@@ -6341,7 +6349,7 @@ Allow users to edit their messages
 
 *Removed in June 16, 2018 release*
 
-.. note:: 
+.. note::
 
    From v5.0 this has been replaced by advanced permissions which offers Admins a way to restrict actions in Mattermost to authorized users only. See the `Advanced Permissions documentation <https://docs.mattermost.com/deployment/advanced-permissions.html>`_ for more details.
 

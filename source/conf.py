@@ -39,7 +39,8 @@ extensions = [
     # The original sphinx_sitemap extension can be found at:
     # https://pypi.org/project/sphinx-sitemap/
     "sitemap",
-    "sphinx_tabs.tabs"
+    "sphinx_tabs.tabs",
+    "redirective"
 ]
 
 sphinx_tabs_disable_tab_closing = True
@@ -166,7 +167,7 @@ redirects = {
     "administration/config-in-database":
         "https://docs.mattermost.com/configure/configuation-in-mattermost-database.html",
     "administration/branding": "https://docs.mattermost.com/configure/custom-branding-tools.html",
-    "administration/config-settings#files": "https://docs.mattermost.com/configure/configuration-settings.html#file-storage",
+    # "administration/config-settings#files": "https://docs.mattermost.com/configure/configuration-settings.html#file-storage",
     "administration/config-settings#maximum-file-size":
         "https://docs.mattermost.com/configure/configuration-settings.html#maximum-file-size",
     "administration/config-settings#aggregate-search-indexes":
@@ -203,8 +204,8 @@ redirects = {
     "administration/data-retention": "https://docs.mattermost.com/comply/data-retention-policy.html",
     "administration/custom-terms-of-service": "https://docs.mattermost.com/comply/custom-terms-of-service.html",
     "administration/mobile-changelog": "https://docs.mattermost.com/deploy/mobile-app-changelog.html",
-    "administration/config-settings": "https://docs.mattermost.com/configure/configuration-settings.html",
-    "administration/config-settings#push-notification-contents": 
+    # "administration/config-settings": "https://docs.mattermost.com/configure/configuration-settings.html",
+    "administration/config-settings#push-notification-contents":
         "https://docs.mattermost.com/configure/configuration-settings.html#push-notification-contents",
     "administration/config-settings#gitlab-settings":
         "https://docs.mattermost.com/configure/configuration-settings.html#gitlab-settings",
@@ -228,7 +229,7 @@ redirects = {
         "https://docs.mattermost.com/configure/configuration-settings.html#enable-high-availability-mode",
     "administration/config-settings#forward-port-80-to-443":
         "https://docs.mattermost.com/configure/configuration-settings.html#forward-port-80-to-443",
-    "administration/config-settings#smtp-email-server": 
+    "administration/config-settings#smtp-email-server":
         "https://docs.mattermost.com/configure/configuration-settings.html#smtp-email-server",
     "configure/config-ssl-http2-apache2": "https://forum.mattermost.org/t/configuring-apache2-with-ssl-and-http-2/11939",
     "cloud/cloud-administration/cloud-changelog": "https://docs.mattermost.com/install/cloud-changelog.html",
@@ -292,7 +293,7 @@ redirects = {
         "https://docs.mattermost.com/onboard/certificate-based-authentication.html",
     "deployment/mobile-app-deployment": "https://docs.mattermost.com/deploy/mobile-overview.html",
     "deployment/deployment#file-store": "https://docs.mattermost.com/deploy/deployment-overview.html#file-store",
-    "deployment/cluster#proxy-server-configuration": 
+    "deployment/cluster#proxy-server-configuration":
         "https://docs.mattermost.com/scale/high-availability-cluster.html#proxy-server-configuration",
     "deployment/cluster#upgrade-guide": "https://docs.mattermost.com/scale/high-availability-cluster.html#upgrade-guide",
     "deployment/mobile-app-deployment": "https://docs.mattermost.com/deploy/mobile-overview.html",
