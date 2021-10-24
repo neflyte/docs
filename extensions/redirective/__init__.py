@@ -10,81 +10,96 @@ from sphinx.util.docutils import SphinxDirective
 logger = logging.getLogger(__name__)
 
 
-class RedirectiveNode(nodes.General, nodes.Element):
-    redirect_list: List[str] = list()
-
+class RedirectiveNode(nodes.Element):
     def __init__(self, redirects: List[str]):
         super().__init__()
-        self.redirect_list = redirects.copy()
-        # logger.info('RedirectiveNode: redirect_list=%s' % ','.join(self.redirect_list))
+        self._redirect_list: List[str] = list()
+        for redirect in redirects.copy():
+            if redirect != "":
+                logger.verbose("[Redirective] RedirectiveNode: adding redirect: %s" % redirect)
+                self._redirect_list.append(redirect)
 
     def astext(self) -> str:
-        return ','.join(self.redirect_list)
+        return ",".join(self.redirect_list)
 
-    def get_list(self) -> List[str]:
-        return self.redirect_list
+    @property
+    def redirect_list(self) -> List[str]:
+        return self._redirect_list
 
 
 class Redirective(SphinxDirective):
-    has_content = True
+    has_content = False
+    required_arguments = 1
+    final_argument_whitespace = True
 
     def run(self) -> List[nodes.Node]:
-        redirects: List[str] = list()
-        for line in self.content.data:
-            redirects.append('%s' % line)
-        # logger.info('directive: redirects=%s' % ','.join(redirects))
+        redirect_args = " ".join(self.arguments)
+        redirects = redirect_args.split(" ")
+        logger.verbose("[Redirective] Directive: parsed redirects: %s" % ",".join(redirects))
         return [RedirectiveNode(redirects)]
 
 
 class DoctreeWalker(nodes.SparseNodeVisitor):
-    section_redirects: Dict[str, List[str]]
-    root_section: str
-
     def __init__(self, document: nodes.document):
         super().__init__(document)
-        self.section_redirects = dict()
-        self.root_section = ''
+        self._section_redirects: Dict[str, List[str]] = dict()
+        self._root_section: str = ""
         self.find_root_section(document)
 
     def find_root_section(self, document: nodes.document):
         for child in document.children:
             if isinstance(child, nodes.section):
-                # logger.info('found section')
                 for attr in child.attlist():
-                    if attr[0] == 'ids':
-                        self.root_section = attr[1][0]
+                    if attr[0] == "ids":
+                        self._root_section = attr[1][0]
+                        logger.debug(
+                            "[Redirective] DoctreeWalker: found root section: %s"
+                            % self._root_section
+                        )
                         break
 
     def visit_section(self, node: nodes.section):
         # get section id
-        section_id: str = ''
+        section_id: str = ""
         for att in node.attlist():
-            if att[0] == 'ids':
+            if att[0] == "ids":
                 # TODO: Should this assumption be allowed?
                 section_id = att[1][0]
+                if section_id != "":
+                    logger.debug(
+                        "[Redirective] DoctreeWalker: visiting section %s"
+                        % section_id
+                    )
                 break
-        # logger.info('  > section: %s' % section_id)
         # look for redirective nodes; remove them when we're done
         redirects: List[str] = list()
         for child in node.children:
             if isinstance(child, RedirectiveNode):
                 redir_node: RedirectiveNode = child
-                # logger.info('child is RedirectiveNode; list=%s' % ','.join(redir_node.get_list()))
-                redirects.extend(redir_node.get_list())
+                redirects.extend(redir_node.redirect_list)
+                logger.debug(
+                    "[Redirective] DoctreeWalker: child node redirects: %s"
+                    % ",".join(redir_node.redirect_list)
+                )
                 child.replace_self([])
-        if len(redirects) > 0:
-            if section_id != '':
-                # logger.info('section_redirects[%s] = %s' % (section_id, ','.join(redirects)))
-                self.section_redirects[section_id] = redirects
+                break
+        if len(redirects) > 0 and section_id != "":
+            logger.debug(
+                "[Redirective] DoctreeWalker: adding %d redirects to section %s"
+                % (len(redirects), section_id)
+            )
+            self._section_redirects[section_id] = redirects
 
     def unknown_visit(self, node: nodes.Node) -> Any:
         raise nodes.SkipNode
 
-    def get_redirects(self) -> Dict[str, List[str]]:
-        return self.section_redirects
+    @property
+    def section_redirects(self) -> Dict[str, List[str]]:
+        return self._section_redirects
 
-    def get_root_section(self) -> str:
-        return self.root_section
+    @property
+    def root_section(self) -> str:
+        return self._root_section
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
@@ -94,16 +109,16 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     :param app: The Sphinx Application instance
     :return: A dict of Sphinx extension options
     """
-    app.add_directive('redirective', Redirective)
+    app.add_directive("redirective", Redirective)
     app.add_node(RedirectiveNode)
-    app.connect('env-purge-doc', env_purge_doc)
-    app.connect('env-merge-info', env_merge_info)
-    app.connect('html-collect-pages', html_collect_pages)
-    app.connect('doctree-resolved', doctree_resolved)
+    app.connect("env-purge-doc", env_purge_doc)
+    app.connect("env-merge-info", env_merge_info)
+    app.connect("html-collect-pages", html_collect_pages)
+    app.connect("doctree-resolved", doctree_resolved)
     return {
-        'version': '0.1',
-        'parallel_read_safe': True,
-        'parallel_write_safe': True,
+        "version": "0.1",
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
     }
 
 
@@ -116,13 +131,15 @@ def env_purge_doc(app: Sphinx, env: BuildEnvironment, docname: str) -> None:
     :param env: The Sphinx BuildEnvironment
     :param docname: The name of the document to purge
     """
-    if hasattr(env, 'redirective_redirects'):
+    if hasattr(env, "redirective_redirects"):
         if docname in env.redirective_redirects:
-            logger.info('env_purge_doc: redirects contains %s; removing it' % docname)
+            logger.verbose("[Redirective] env_purge_doc: redirects contains %s; removing it" % docname)
             env.redirective_redirects.pop(docname)
 
 
-def env_merge_info(app: Sphinx, env: BuildEnvironment, docnames: List[str], other: BuildEnvironment) -> None:
+def env_merge_info(
+    app: Sphinx, env: BuildEnvironment, docnames: List[str], other: BuildEnvironment
+) -> None:
     """
     Merge collected document names from parallel readers (workers) into the master Sphinx environment.
     This function is called when the Sphinx `env-merge-info` event is fired.
@@ -132,15 +149,19 @@ def env_merge_info(app: Sphinx, env: BuildEnvironment, docnames: List[str], othe
     :param docnames: A list of the document names to merge
     :param other: The Sphinx BuildEnvironment from the reader worker
     """
-    if not hasattr(env, 'redirective_redirects'):
+    if not hasattr(env, "redirective_redirects"):
         env.redirective_redirects = dict()
     # Add any links that were present in the reader worker's environment
-    if hasattr(other, 'redirective_redirects'):
+    if hasattr(other, "redirective_redirects"):
         for linkKey in other.redirective_redirects:
             if linkKey in env.redirective_redirects:
-                env.redirective_redirects[linkKey].extend(other.redirective_redirects[linkKey])
+                env.redirective_redirects[linkKey].extend(
+                    other.redirective_redirects[linkKey]
+                )
             else:
-                env.redirective_redirects[linkKey] = other.redirective_redirects[linkKey]
+                env.redirective_redirects[linkKey] = other.redirective_redirects[
+                    linkKey
+                ]
 
 
 def html_collect_pages(app: Sphinx) -> List[Tuple[str, Dict[str, Any], str]]:
@@ -151,58 +172,57 @@ def html_collect_pages(app: Sphinx) -> List[Tuple[str, Dict[str, Any], str]]:
     :return: A list of redirect pages to create
     """
     redirect_pages: List[Tuple[str, Dict[str, Any], str]] = list()
-    if hasattr(app.env, 'redirective_redirects'):
+    if hasattr(app.env, "redirective_redirects"):
         # get html_baseurl
-        html_baseurl = ''
-        if app.config.html_baseurl != '':
+        html_baseurl = ""
+        if app.config.html_baseurl != "":
             html_baseurl = app.config.html_baseurl
         # return an entry for each redirect page to write
         for redir_from in app.env.redirective_redirects:
             for redir_to in app.env.redirective_redirects[redir_from]:
                 # to_uri = '%s/%s' % (html_baseurl, redir_to)
                 to_uri = html_baseurl
-                if not html_baseurl.endswith('/'):
-                    to_uri += '/'
-                if '#' in str(redir_to):
-                    toks: List[str] = str(redir_to).split('#')
+                if not html_baseurl.endswith("/"):
+                    to_uri += "/"
+                if "#" in str(redir_to):
+                    toks: List[str] = str(redir_to).split("#")
                     if len(toks) == 1:
-                        to_uri += '%s.html' % toks[0]
+                        to_uri += "%s.html" % toks[0]
                     elif len(toks) >= 2:
-                        to_uri += '%s.html#%s' % (toks[0], toks[1])
+                        to_uri += "%s.html#%s" % (toks[0], toks[1])
                     else:
-                        to_uri += '%s.html' % redir_to
+                        to_uri += "%s.html" % redir_to
                 else:
-                    to_uri += '%s.html' % redir_to
-                logger.info("redirective: %s -> %s" % (redir_from, to_uri))
-                redirect_pages.append((redir_from,
-                                       {
-                                           'title': 'redirecting...',
-                                           'to_uri': to_uri,
-                                       },
-                                       'redirective.html'))
+                    to_uri += "%s.html" % redir_to
+                logger.verbose("[Redirective] Redirecting %s to %s" % (redir_from, to_uri))
+                redirect_pages.append(
+                    (
+                        redir_from,
+                        {
+                            "title": "redirecting...",
+                            "to_uri": to_uri,
+                        },
+                        "redirective.html",
+                    )
+                )
     return redirect_pages
 
 
 def doctree_resolved(app: Sphinx, doctree: nodes.document, docname: str) -> None:
-    # if docname != 'configure/configuration-settings':
-    #     return
-    # logger.info('docname: %s' % docname)
     walker: DoctreeWalker = DoctreeWalker(doctree)
     doctree.walk(walker)
-    section_redirects: Dict[str, List[str]] = walker.get_redirects()
-    if len(section_redirects) == 0:
+    if len(walker.section_redirects) == 0:
         return
-    if not hasattr(app.env, 'redirective_redirects'):
+    if not hasattr(app.env, "redirective_redirects"):
         app.env.redirective_redirects = dict()
-    for section_id in section_redirects:
+    for section_id in walker.section_redirects:
         # from: section_redirects[section_id]...
-        for sec_redir in section_redirects[section_id]:
-            redirect_from = sec_redir
+        for redirect_from in walker.section_redirects[section_id]:
             # to: docname + '#' + section_id
-            if section_id == walker.get_root_section():
+            if section_id == walker.root_section:
                 redirect_to = docname
             else:
-                redirect_to = '%s#%s' % (docname, section_id)
+                redirect_to = "%s#%s" % (docname, section_id)
             # logger.info(' >> %s' % redirect_to)
             if redirect_from in app.env.redirective_redirects:
                 app.env.redirective_redirects[redirect_from].append(redirect_to)

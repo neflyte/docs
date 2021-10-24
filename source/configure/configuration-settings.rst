@@ -1,9 +1,7 @@
 Configuration Settings
 ======================
 
-.. redirective::
-
-   administration/config-settings
+.. redirective:: administration/config-settings
 
 Mattermost configuration settings are maintained in the ``config.json`` configuration file, located in the ``mattermost/config`` directory. You can modify the configuration file using the System Console, or by using a text editor to modify it directly.
 
@@ -610,9 +608,7 @@ Enable Elasticsearch for Autocomplete Queries
 File Storage
 ~~~~~~~~~~~~
 
-.. redirective::
-
-   administration/config-settings#files
+.. redirective:: administration/config-settings#files
 
 Mattermost currently supports storing files on the local filesystem and Amazon S3 or S3 compatible containers.
 

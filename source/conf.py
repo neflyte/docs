@@ -64,7 +64,7 @@ source_suffix = [".rst", ".md"]
 redirects = {
     "integrations/jira": "https://mattermost.gitbook.io/plugin-jira/",
     "integrations/zoom": "https://mattermost.gitbook.io/plugin-zoom/",
-    "integrations/net-promoter-score": "https://docs.mattermost.com/manage/user-satisfaction-surveys.html",
+    # "integrations/net-promoter-score": "https://docs.mattermost.com/manage/user-satisfaction-surveys.html",
     "developer/interactive-dialogs": "https://developers.mattermost.com/integrate/admin-guide/admin-interactive-dialogs/",
     "developer/interactive-message-buttons": "https://developers.mattermost.com/integrate/admin-guide/admin-interactive-messages/",
     "developer/message-attachments": "https://developers.mattermost.com/integrate/admin-guide/admin-message-attachments/",

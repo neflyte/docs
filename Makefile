@@ -6,7 +6,7 @@
 SOURCEDIR       = source
 BUILDDIR        = build
 WARNINGSFILE    = $(BUILDDIR)/warnings.log
-SPHINXOPTS      ?= -j auto
+SPHINXOPTS      ?= -j auto -v
 SPHINXBUILD     ?= pipenv run sphinx-build
 SPHINXAUTOBUILD ?= pipenv run sphinx-autobuild
 
