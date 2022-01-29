@@ -1,20 +1,40 @@
 Using Emojis
 ============
 
+|all-plans| |cloud| |self-hosted|
+
+.. |all-plans| image:: ../images/all-plans-badge.png
+  :scale: 30
+  :target: https://mattermost.com/pricing
+  :alt: Available in Mattermost Free and Starter subscription plans.
+
+.. |cloud| image:: ../images/cloud-badge.png
+  :scale: 30
+  :target: https://mattermost.com/download
+  :alt: Available for Mattermost Cloud deployments.
+
+.. |self-hosted| image:: ../images/self-hosted-badge.png
+  :scale: 30
+  :target: https://mattermost.com/deploy
+  :alt: Available for Mattermost Self-Hosted deployments.
+
 Emojis are small, digital images or icons used to communicate or express concepts such as emotions and physical gestures in your messages.
 
 Adding Emojis to messages
 -------------------------
 
-Selecting an Emoji
+Selecting an emoji
 ~~~~~~~~~~~~~~~~~~
 
-Select the **Smile** icon inside the Mattermost message input box to open the Emoji Picker.
+Select the |smile-icon| icon inside the Mattermost message input box to open the Emoji Picker.
+
+.. |smile-icon| image:: ../images/smile-icon.png
+  :alt: Smile icon.
 
 .. image:: ../images/selectemoji.png
-  :alt: Open the Mattermost Emoji Picker.
+  :alt: The Mattermost Emoji Picker dialog.
 
-Selecting a Default Skin Tone
+Selecting a default skin tone
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Select the **Skin Tone** icon in the top right corner of the Emoji Picker to specify a preferred skin tone for people-based emojis. 
@@ -22,7 +42,15 @@ Select the **Skin Tone** icon in the top right corner of the Emoji Picker to spe
 .. image:: ../images/emoji-skin-tone.png
   :alt: Select a default skin tone for people-based emojis.
 
-Typing an Emoji
+Selecting recent emojis
+-----------------------
+
+From Mattermost v6.1 and in Mattermost Cloud, react to messages quickly by selecting a recently-used emoji while hovering over a message. If your most recent reactions aren't visible, you can enable quick reactions by selecting **Settings > Display > Quick reactions on messages**.
+
+.. image:: ../images/recent-emojis.png
+  :alt: React to messages quickly by selecting one of your last three emojis.
+
+Typing an emoji
 ---------------
 
 Alternatively, open the emoji autocomplete by typing ``:`` followed by at least two characters of the word describing the emoji. Descriptions include skin tone details for people-based emojis, where supported.
@@ -44,7 +72,7 @@ You can create Custom Emojis which are available to everyone on your Mattermost 
   
 .. image:: ../images/add_custom_emoji.png
   
-Once saved, your emoji is added to the list of Custom Emoji. 
+Once saved, your emoji is added to the list of Custom Emoji.
 
 .. note::
 
@@ -62,11 +90,11 @@ Deleting Custom Emojis
   
 You can delete Custom Emojis that you created. 
   
-1. Open the **Main Menu** at the top-right of the channels sidebar.
+1. Open the Emoji Picker.
 2. Select **Custom Emoji**.
 3. If required, use the Search Bar to find your Custom Emoji in the list.
-4. Under **Actions** select **Delete**. 
-5. Choose **Delete** to confirm. 
+4. Under **Actions** select **Delete**.
+5. Choose **Delete** to confirm.
   
 .. image:: ../images/delete_custom_emoji.png
    :alt: Delete custom emoji.

@@ -1,40 +1,56 @@
 Organizing Conversations using Collapsed Reply Threads (Beta)
 =============================================================
 
-Threads are a key part of the messaging experience in Mattermost. Threads organize conversations within channels, and threads enable users to discuss topics without adding noise to channels or Direct Messages. 
+|all-plans| |cloud| |self-hosted|
+
+.. |all-plans| image:: ../images/all-plans-badge.png
+  :scale: 30
+  :target: https://mattermost.com/pricing
+  :alt: Available in Mattermost Free and Starter subscription plans.
+
+.. |cloud| image:: ../images/cloud-badge.png
+  :scale: 30
+  :target: https://mattermost.com/download
+  :alt: Available for Mattermost Cloud deployments.
+
+.. |self-hosted| image:: ../images/self-hosted-badge.png
+  :scale: 30
+  :target: https://mattermost.com/deploy
+  :alt: Available for Mattermost Self-Hosted deployments.
+
+Threads are a key part of the messaging experience in Mattermost Channels. They're used to organize conversations and enable users to discuss topics without adding noise to channels or Direct Messages.
 
 Collapsed Reply Threads (Beta) offers an enhanced experience for users communicating in threads and replying to messages. Our goal is to improve users’ ability to process channel content, find, follow, and resume conversations more easily, and keep threaded conversations focused.
 
 .. image:: ../images/collapsed-reply-threads.gif
   :alt: Organize conversations using Collapsed Reply Threads.
   
-Enable Collapsed Reply Threads
-------------------------------
+Enable Collapsed Reply Threads (Beta)
+-------------------------------------
 
-Your System Admin must enable the Collapsed Reply Threads feature in the System Console. See our `Configuration Settings <https://docs.mattermost.com/configure/configuration-settings.html#collapsed-reply-threads-beta>`__ documentation for details. 
+Your System Admin must enable the Collapsed Reply Threads feature in the System Console. See our `Configuration Settings <https://docs.mattermost.com/configure/configuration-settings.html#collapsed-reply-threads-beta>`__ documentation for details. Before enabling, please ensure you are well versed with the known issues, particularly relating to database resource requirements and server performance implications. 
 
-Once this feature is enabled in the System Console, you can `enable this feature for your Mattermost account <https://docs.mattermost.com/messaging/managing-account-settings.html#collapsed-reply-threads-beta>`__ by going to **Account Settings > Display > Collapsed Reply Threads (Beta)**.
+Once this feature is enabled in the System Console, you can `enable this feature for your account <https://docs.mattermost.com/messaging/managing-account-settings.html#collapsed-reply-threads-beta>`__ by going to **Settings > Display > Collapsed Reply Threads (Beta)**.
 
-Known Issues
+Known issues
 ------------
 
 .. important::
 
-    Collapsed Reply Threads are available as an early beta in Mattermost Cloud and Mattermost Server v5.37 and later. It's expected that you may experience bugs as we stabilize the feature. In particular, please be aware of these known issues: 
-    
-    - Preferences for mobile, desktop, and email notifications may not be respected when threads are followed or unfollowed. Work in-progress tickets: `MM-37030 <https://mattermost.atlassian.net/browse/MM-37030>`__, `MM-37031 <https://mattermost.atlassian.net/browse/MM-37031>`__, `MM-36234 <https://mattermost.atlassian.net/browse/MM-36234>`__
+    Collapsed Reply Threads is available as an early beta in Mattermost Cloud and Mattermost Server v5.37 and later. It's expected that you may experience bugs and server performance implications as we stabilize the feature. In particular, please be aware of these important known issues and risks:
+
+    - Collapsed Reply Threads is a complex feature that will increase demand on your server and database resources. If you cannot easily scale up your database size, or are running the Mattermost application server and database server on the same machine, we recommended waiting to enable Collapsed Reply Threads until it's `promoted to general availability in Q1 2022 <https://mattermost.com/blog/collapsed-reply-threads-ga/>`_. Learn more about these `performance considerations here <https://support.mattermost.com/hc/en-us/articles/4413183568276>`__.   
     - When enabling Collapsed Reply Threads for the first time, you may see channels or threads you’ve seen before appear as unread. To resolve this:
       
-      - View any unread channels or use ALT+SHIFT+UP/DOWN to switch to unread channels with the keyboard. Work in-progress ticket: `MM-35494 <https://mattermost.atlassian.net/browse/MM-35494>`__
+      - View any unread channels or use ALT+SHIFT+UP/DOWN to navigate to unread channels with the keyboard. Work in-progress ticket: `MM-35494 <https://mattermost.atlassian.net/browse/MM-35494>`__
       - Use the **Mark all as read** button in the **Threads** view to mark your threads as read. Work in-progress ticket: `MM-35345 <https://mattermost.atlassian.net/browse/MM-35345>`__
-       
-    - You may experience lag in your desktop or web client if you're following many threads or opening threads with many replies. Work in-progress tickets: `MM-36696 <https://mattermost.atlassian.net/browse/MM-36696>`__, `MM-36697 <https://mattermost.atlassian.net/browse/MM-36697>`__, `MM-36698 <https://mattermost.atlassian.net/browse/MM-36698>`__
+
     - For a comprehensive list of known issues, and to see our work queue in priority order, check out our `Kanban board <https://mattermost.atlassian.net/secure/RapidBoard.jspa?rapidView=91&quickFilter=499>`__.
 
-Start or Reply to Threads
+Start or reply to threads
 -------------------------
 
-Replies are collapsed under the first message of a thread. To reply to a thread, select the **Reply** icon, or select the reply count if a thread already exists. 
+Replies are collapsed under the first message of a thread. To reply to a thread, select the **Reply** icon, or select the reply count if a thread already exists.
 
 .. tip:: 
     
@@ -44,10 +60,10 @@ Replies are collapsed under the first message of a thread. To reply to a thread,
 .. image:: ../images/crt-new-unread-threads.png
    :alt: A dot on threads in a channel indicates unread replies.
 
-Follow Threads and Messages
+Follow threads and messages
 ---------------------------
 
-You can follow particular messages and threads so that any reply activity triggers notifications. Follow or unfollow any thread, at any time, by toggling the thread’s **Follow/Following** indicator, or by accessing the **More Actions** menu. 
+You can follow particular messages and threads so that any reply activity triggers `notifications <https://docs.mattermost.com/messaging/managing-account-settings.html#notifications>`__. Follow or unfollow any thread, at any time, by toggling the thread’s **Follow/Following** indicator, or by accessing the **More Actions** menu.
 
 .. image:: ../images/crt-following-thread.png
    :alt: Follow threads to stay updated on replies.
@@ -58,9 +74,9 @@ You'll automatically follow every thread you participate or are mentioned in. If
    :alt: Follow, unfollow, and mark threads as unread from More Actions.
    
 .. tip::
-  Follow messages with no replies from the **More Actions** menu to be notified if someone replies to the message later.
+  Follow messages with no replies from the **More Actions** menu to be notified if someone replies to the message later based on your notification preferences.
 
-View All Threads
+View all threads
 ----------------
 
 Select **Threads** at the top of the channel sidebar to see all your followed threads on the currently selected team. Threads with the most recent replies display at the top of the list. 
@@ -70,7 +86,7 @@ Select **Unreads** to filter your followed threads by only those with unread rep
 .. image:: ../images/crt-thread-view.png
   :alt: Select Threads in the channel sidebar to see all thread updates in your Threads View.
 
-Tutorial Video
+Tutorial video
 ---------------
 
 For additional details about working with the Beta release of Collapsed Reply Threads, see our `tutorial video on YouTube <https://www.youtube.com/watch?v=hnD0Zj-mIbs>`_. 

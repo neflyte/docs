@@ -1,6 +1,23 @@
 Keyboard Accessibility
 ======================
 
+|all-plans| |cloud| |self-hosted|
+
+.. |all-plans| image:: ../images/all-plans-badge.png
+  :scale: 30
+  :target: https://mattermost.com/pricing
+  :alt: Available in Mattermost Free and Starter subscription plans.
+
+.. |cloud| image:: ../images/cloud-badge.png
+  :scale: 30
+  :target: https://mattermost.com/download
+  :alt: Available for Mattermost Cloud deployments.
+
+.. |self-hosted| image:: ../images/self-hosted-badge.png
+  :scale: 30
+  :target: https://mattermost.com/deploy
+  :alt: Available for Mattermost Self-Hosted deployments.
+
 Navigational keyboard shortcuts help you use Mattermost without requiring a mouse. Below is a list of supported shortcuts. Elements in focus have a colored outline, as shown here:
 
 .. image:: ../images/focus.png
@@ -42,7 +59,7 @@ Mattermost has eight regions that can be focused for navigation. Use **F6** (Des
 Message Navigation
 ------------------
 
-When the message list region is focused, use the **UP** or **DOWN** arrow keys to navigate through messages. Press **TAB** to navigate through message actions.
+When the message list region is focused, use the **UP** or **DOWN** arrow keys to navigate through messages and reply threads. Press **TAB** to navigate through message actions.
 
 .. image:: ../images/message-navigation.gif
   :alt: Navigate through Mattermost messages using a keyboard.

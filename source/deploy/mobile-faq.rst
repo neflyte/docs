@@ -15,7 +15,7 @@ As a workaround, you can install the released Mattermost mobile app and sign up 
 Is there a tablet version of the mobile apps?
 ---------------------------------------------
 
-Mattermost Classic mobile apps support tablets. Our second generation mobile apps (Mattermost) have beta support for tablets.
+Mattermost Classic mobile apps support tablets. Our second generation Mattermost mobile apps include beta support for tablets.
 
 Can the permanent sidebar on tablet devices be disabled?
 --------------------------------------------------------
@@ -59,12 +59,13 @@ This means if you use the Mattermost apps from the Apple App Store or Google Pla
 4. Either APNS or FCM receives the push notification message from MPNS over TLS, and then relays the message to the user's iOS or Android device to be displayed.
 
 .. note:: 
+  
+  The use of push notifications with iOS and Android applications will require a moment where the contents of push notifications are visible and unencrypted by a server controlled by either Apple or Google. This is standard for any iOS or Android app. For this reason, there is an option available in Mattermost Enterprise to omit the contents of Mattermost messages from push notifications, or to configure message contents to be fetched from the server when notifications reach the device. See our `Configuration Settings <https://docs.mattermost.com/configure/configuration-settings.html#push-notification-contents>`__ documentation for details.
 
-  The use of push notifications with iOS and Android applications will require a moment where the contents of push notifications are visible and unencrypted by 
-  server controlled by either Apple or Google. This is standard for any iOS or Android app. For this reason, there is an `option to omit the contents of Mattermost
-  messages from push notifications <https://docs.mattermost.com/configure/configuration-settings.html#push-notification-contents>`_, or `to configure message
-  content to be fetched from the server <https://docs.mattermost.com/configure/configuration-settings.html#push-notification-contents>`_ when the notification
-  reaches the device (*available in Enterprise Edition E20*) in order to meet certain compliance requirements.
+Is TLS v1.3 supported?
+----------------------
+
+No. TLS v1.3 doesn't work with the Mattermost Mobile app websocket. This limitation will be addressed in a future release. We recommend that you continue using TLS v1.2.
 
 What post metadata is sent in mobile push notifications?
 --------------------------------------------------------
@@ -83,18 +84,38 @@ The following post metadata is sent in all push notifications:
 
 Additional metadata may be sent depending on the System Console setting for `Push Notification Contents <https://docs.mattermost.com/configure/configuration-settings.html#push-notification-contents>`__:
 
-- **Generic description with sender and channel names:** ``Channel name`` metadata will be included.
-- **Full message content sent in the notification payload:** ``Post content`` and ``Channel name`` metadata will be included.
-- **Full message content fetched from the server on receipt:** (*available in Enterprise Edition E20*) ``Post content`` and ``Channel name`` aren't included in the notification payload. Instead, the ``Post ID`` is used to fetch ``Post content`` and ``Channel name`` from the server after the push notification is received on the device.
+- **Generic description with sender and channel names**: ``Channel name`` metadata will be included.
+- **Full message content sent in the notification payload**: ``Post content`` and ``Channel name`` metadata will be included.
+- **Full message content fetched from the server on receipt** (available in Mattermost Enterprise): ``Post content`` and ``Channel name`` are not included in the notification payload, instead the ``Post ID`` is used to fetch ``Post content`` and ``Channel name`` from the server after the push notification is received on the device.
 
 How can I use ID-Only Push Notifications to protect notification content from being exposed to third-party services?
 ---------------------------------------------------------------------------------------------------------------------
 
 When it comes to mobile data privacy, many organizations prioritize secure handling of messaging data, particularly when it may contain mission-critical or proprietary information. These organizations may have concerns about using mobile notifications because data must pass through third-party entities like Apple Push Notification Service (APNS) or Google Firebase Cloud Messaging (FCM) before it reaches a device. 
 
-This poses a potential risk for organizations that operate under strict compliance requirements and cannot expose message data to external entities. To solve this, in Mattermost v5.18 and later, we offer an option for greater protection for Mattermost push notification message data by only sending a unique message ID in the notification payload rather than the full message data (*available in Enterprise Edition E20*). Once the device receives the ID, it then fetches the message content directly from the server and displays the notification per usual. 
+This poses a potential risk for organizations that operate under strict compliance requirements and cannot expose message data to external entities. To solve this, in Mattermost v5.18 and later, we offer an option for greater protection for Mattermost push notification message data by only sending a unique message ID in the notification payload rather than the full message data (available in Mattermost Enterprise). Once the device receives the ID, it then fetches the message content directly from the server and displays the notification per usual. 
 
-External entities, such as APNS and FCM, handle only the ID and are unable to read any part of the message itself. If your organization has strict privacy or compliance needs, the `ID-Only Push Notification <https://docs.mattermost.com/configure/configuration-settings.html#push-notification-contents>`_ setting offers a high level of privacy while still allowing your team members to benefit from mobile push notifications.
+External entities, such as APNS and FCM, handle only the ID and are unable to read any part of the message itself. If your organization has strict privacy or compliance needs, the `ID-Only Push Notification <https://docs.mattermost.com/configure/configuration-settings.html#push-notification-contents>`_ setting offers a high level of privacy while still allowing your team members to benefit from mobile push notifications.  
+
+The following payload shows an example of the json that is transmitted to the push notification service when using the ID-Only setting:
+
+  .. code-block:: json
+  
+    {
+        "ack_id": "nnfbqk5bnffe5karxuzs8o5rec",
+        "platform": "apple_rn",
+        "server_id": "aoej8izzfffr9e67d6uz3g387h",
+        "device_id": "32f198dbdd7427be7e6f03ba721ffdceba58c3f0bfa9c4655a6e7cc8271ba539",
+        "post_id": "77d9cs9aq3b1fpoepbdbmqfs4c",
+        "category": "CAN_REPLY",
+        "message": "You've received a new message.",
+        "badge": 3,
+        "channel_id": "et3ghiycm7g7bb41ihg85pqgah",
+        "type": "message",
+        "sender_id": "g774dzud4tgaxgphso4wm8xrxe",
+        "version": "v2",
+        "is_id_loaded": true
+    }
 
 What are my options for securing the mobile apps?
 -------------------------------------------------
@@ -133,7 +154,7 @@ The following options are available for securing your push notification service:
 
 4. Securing the Mattermost Apple App Store and Google Play apps:
 
-  - When using Mattermost mobile apps from the App Store and Google Play, purchase an annual subscription to Mattermost Enterprise Edition E10 or higher, which offers a `Hosted Push Notification Service (HPNS) <https://docs.mattermost.com/deploy/mobile-hpns.html#hosted-push-notifications-service-hpns>`__.
+  - When using Mattermost mobile apps from the App Store and Google Play, purchase an annual subscription to Mattermost Professional or Enterprise to use Mattermost's `Hosted Push Notification Service (HPNS) <https://docs.mattermost.com/deploy/mobile-hpns.html#hosted-push-notifications-service-hpns>`__.
 
 .. note:: 
 
@@ -252,8 +273,8 @@ How do I connect users across internal and external networks?
 
 By setting up global network traffic management, you can send a user to an internal or external network when connecting with a mobile app. Moreover, you can have two separate layers of restrictions on internal and external traffic, such as:
 
-- In the internal network, deploy on a private network via per device VPN.
-- In the external network, deploy with `TLS mutual auth <https://docs.mattermost.com/deployment/ssl-client-certificate.html>`__ with an NGINX proxy, and `client-side certificates <https://docs.mattermost.com/deployment/certificate-based-authentication.html>`__ for desktop and iOS.
+ - In the internal network, deploy on a private network via per device VPN.
+ - In the external network, deploy with `TLS mutual auth <https://docs.mattermost.com/onboard/ssl-client-certificate.html>`__ with an NGINX proxy, and `client-side certificates <https://docs.mattermost.com/onboard/certificate-based-authentication.html>`__ for desktop and iOS.
  
 Many services such as Microsoft Azure provide options for `managing network traffic <https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview>`__, or you can engage a services partner to assist.
 
@@ -305,7 +326,7 @@ You will need to `whitelist one subdomain and one port from Apple <https://devel
 Run App Store versions of the Mattermost mobile apps
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the mobile applications hosted by Mattermost in the `Apple App Store <https://apps.apple.com/ca/app/mattermost/id1257222717>`_ or `Google Play Store <https://play.google.com/store/apps/details?id=com.mattermost.rn>`_ and connect with the `Mattermost Hosted Push Notification Service (HPNS) <https://docs.mattermost.com/deploy/mobile-hpns.html>` through your corporate proxy.
+You can use the mobile applications hosted by Mattermost in the `Apple App Store <https://apps.apple.com/ca/app/mattermost/id1257222717>`_ or `Google Play Store <https://play.google.com/store/apps/details?id=com.mattermost.rn>`_ and connect with the `Mattermost Hosted Push Notification Service (HPNS) <https://docs.mattermost.com/deploy/mobile-hpns.html>`__ through your corporate proxy.
 
 .. note::
   
