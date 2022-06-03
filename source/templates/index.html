@@ -1,11 +1,19 @@
 {# Overrides the output of converting index.rst to enable a custom landing page for the docs #}
 {# Ensure that all links found within the index.rst are transposed here as well. #}
-
 {%- extends "layout-notoc.html" %}
 {% set title = _('Mattermost Documentation') %}
-
+{% block extrahead %}
+    {{ super() }}
+    <script>
+        window['SwiftypeObject'] = "_st";
+        var _st = function(){
+            _st.q = [arguments];
+        };
+        _st('install','Hxat6NPk3oUDZDszHuga','2.0.0');
+    </script>
+    <script src='https://s.swiftypecdn.com/install/v2/st.js'></script>
+{% endblock %}
 {% block body %}
-
     <style>
     @import url("https://use.typekit.net/cng2uup.css");
     </style>
@@ -319,6 +327,7 @@
             padding: 20px 20px 15px;
             background-color: white;
             box-shadow: 0px 0px 33px 2px rgba(0, 0, 0, 0.2);
+            padding-left: 28px;
         }
 
         .redesign-landing .landing-search input[type="text"] {
@@ -336,8 +345,10 @@
                 padding: 20px;
             }
             .redesign-landing .landing-search input[type="text"] {
-                width: 600px;
-                padding: 10px 20px;
+                width: 540px;
+                padding: 10px 25px 10px 30px;
+                background-size: 1rem;
+                background-position-y: center;
             }
         }
     </style>
@@ -350,30 +361,30 @@
             </div>
             <div class="landing-search" role="search">
                 <form id="rtd-search-form" class="wy-form" action="{{ pathto('search') }}" method="get">
-                    <input type="text" name="q" placeholder="What are you looking for?" />
+                    <input type="text" name="q" placeholder="What are you looking for?" class="st-default-search-input" autofocus />
                     <input type="hidden" name="check_keywords" value="yes" />
                     <input type="hidden" name="area" value="default" />
                 </form>
             </div>
         </section>
-    
+
         <section class="home-cards padding-tb--large bg--gray">
             <div class="container">
                 <div class="home-cards__group padding-b--large">
                     <h2>Setup and Administration Guides</h2>
                     <div class="card-grid">
                         <a href="overview/index.html" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Overview.svg', 1) }}" alt="" width="50" height="50">                         
+                            <img src="{{ pathto('_static/images/home/Overview.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Overview</h3>
                             <p>Learn about Mattermost products, capabilities, features, and licensing.</p>
                         </a>
                         <a href="guides/deployment.html" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Deploy.svg', 1) }}" alt="" width="50" height="50">   
+                            <img src="{{ pathto('_static/images/home/Deploy.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Deploy</h3>
                             <p>Install Mattermost and scale it to meet your needs.</p>
                         </a>
                         <a href="guides/administration.html" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Admin-Guide.svg', 1) }}" alt="" width="50" height="50">                                 
+                            <img src="{{ pathto('_static/images/home/Admin-Guide.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Admin Guide</h3>
                             <p>Setup, manage, and configure your Mattermost server.</p>
                         </a>
@@ -383,17 +394,17 @@
                     <h2>User Guides</h2>
                     <div class="card-grid">
                         <a href="guides/channels.html" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Channels.svg', 1) }}" alt="" width="50" height="50">   
+                            <img src="{{ pathto('_static/images/home/Channels.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Channels</h3>
                             <p>Bring your team together with modern messaging and collaboration.</p>
                         </a>
                         <a href="guides/playbooks.html" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Playbooks.svg', 1) }}" alt="" width="50" height="50">   
+                            <img src="{{ pathto('_static/images/home/Playbooks.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Playbooks</h3>
                             <p>Build reliable and repeatable responses for workflow and process automation.</p>
                         </a>
                         <a href="guides/boards.html" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Boards.svg', 1) }}" alt="" width="50" height="50">   
+                            <img src="{{ pathto('_static/images/home/Boards.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Boards</h3>
                             <p>Keep your team aligned on project planning and execution.</p>
                         </a>
@@ -403,17 +414,17 @@
                     <h2>Other Resources</h2>
                     <div class="card-grid">
                         <a href="https://developers.mattermost.com/contribute/getting-started/" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Contribute.svg', 1) }}" alt="" width="50" height="50">   
+                            <img src="{{ pathto('_static/images/home/Contribute.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Contribute</h3>
                             <p>Contribute code to help make Mattermost better.</p>
                         </a>
                         <a href="https://developers.mattermost.com/integrate/getting-started/" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Integrate-Extend.svg', 1) }}" alt="" width="50" height="50">   
+                            <img src="{{ pathto('_static/images/home/Integrate-Extend.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Integrate and Extend</h3>
                             <p>Extend Mattermost capabilities via Apps, Plugins, Webhooks, or APIs.</p>
                         </a>
                         <a href="https://docs.mattermost.com/guides/get-help.html" class="card-single">
-                            <img src="{{ pathto('_static/images/home/Help.svg', 1) }}" alt="" width="50" height="50">   
+                            <img src="{{ pathto('_static/images/home/Help.svg', 1) }}" alt="" width="50" height="50">
                             <h3>Get Help</h3>
                             <p>Connect with our community, or leverage our premium support services.</p>
                         </a>
@@ -435,7 +446,7 @@
                     <li id="menu-item-25355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25355"><a href="https://mattermost.com/events/" data-ol-has-click-handler="">Events</a></li>
                     <li id="menu-item-25356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25356"><a href="https://mattermost.com/careers/" data-ol-has-click-handler="">Careers</a></li>
                     <li id="menu-item-28328" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28328"><a href="https://mattermost.com/contact-sales/" data-ol-has-click-handler="">Contact Us</a></li>
-                </ul>		
+                </ul>
             </li>
 		</ul>
 		<ul class="footer-menu__single">
@@ -459,7 +470,7 @@
                     <li id="menu-item-25362" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25362"><a href="https://docs.mattermost.com/guides/administration.html" data-ol-has-click-handler="">Admin</a></li>
                     <li id="menu-item-25363" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25363"><a href="https://api.mattermost.com/" data-ol-has-click-handler="">API Reference</a></li>
                     <li id="menu-item-25364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25364"><a href="https://docs.mattermost.com/" data-ol-has-click-handler="">All Docs</a></li>
-                </ul>			
+                </ul>
             </li>
 		</ul>
 		<ul class="footer-menu__single">
@@ -531,5 +542,4 @@
 		</ul>
 	</div>
 </footer>
-
 {% endblock %}
