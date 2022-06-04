@@ -193,7 +193,7 @@ var Search = {
                 toAppend = searchterms;
                 // Effectively disable highlighting by not collecting any highlight terms
                 // Uncomment the line below to enable highlighting
-                // hlterms.push(tmp[i].toLowerCase());
+                hlterms.push(tmp[i].toLowerCase());
             }
             // only add if not already in the list
             if (!$u.contains(toAppend, word))
