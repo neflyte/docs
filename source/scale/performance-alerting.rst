@@ -1,22 +1,8 @@
-Mattermost Performance Alerting Guide
+Mattermost performance alerting guide
 ======================================
 
-|enterprise| |cloud| |self-hosted|
-
-.. |enterprise| image:: ../images/enterprise-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in the Mattermost Enterprise subscription plan.
-
-.. |cloud| image:: ../images/cloud-badge.png
-  :scale: 30
-  :target: https://mattermost.com/download
-  :alt: Available for Mattermost Cloud deployments.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/ent-cloud-selfhosted.rst
+  :start-after: :nosearch:
 
 *Available in legacy Mattermost Enterprise Edition E20*
 
@@ -27,7 +13,7 @@ Mattermost recommends using Prometheus and Grafana to track performance metrics 
 
 **Prerequisites**
 
-Set up performance monitoring for Mattermost. See our `Performance Monitoring <https://docs.mattermost.com/scale/performance-monitoring.html>`__ documentation to learn more.
+Set up performance monitoring for Mattermost. See our `Performance Monitoring </scale/performance-monitoring.html>`__ documentation to learn more.
 
 To get alerts, first set up a Notification Channel in Grafana. Here’s how you can set it up to automatically post alerts in Mattermost:
 
@@ -38,8 +24,8 @@ To get alerts, first set up a Notification Channel in Grafana. Here’s how you 
 
 2. In Grafana:
 
-  a. Under the alert icon in the sidebar, click **Notification channels**.
-  b. Click **Add channel**.
+  a. Under the alert icon in the sidebar, select **Notification channels**.
+  b. Select **Add channel**.
   c. Enter **Mattermost Alerts Channel** as the name.
   d. For type, select **Slack**.
   e. Paste your webhook URL into the URL field.
@@ -48,7 +34,7 @@ To get alerts, first set up a Notification Channel in Grafana. Here’s how you 
 
 If you would also like to get email alerts, you can follow `these instructions <https://grafana.com/docs/grafana/latest/alerting/>`__ to set that up.
 
-**Configuring Alerts**
+**Configuring alerts**
 
 The `Mattermost dashboards <https://grafana.com/dashboards?search=mattermost>`__ for Grafana come with some partially pre-configured alerts on the following charts:
 
@@ -60,23 +46,27 @@ The `Mattermost dashboards <https://grafana.com/dashboards?search=mattermost>`__
 
 To configure alerts, set an appropriate threshold and enable notifications. Enabling notifications is the same for each chart, but setting the correct threshold can have some variances that are better handled on a per-chart basis.
 
-1. For each chart, click on the chart name and click **Edit**:
+1. For each chart, select the chart name, then select **Edit**:
 
 .. image:: ../images/perf-1.png
+   :alt: Configure Grafana dashboard alerts for each chart by selecting the chart name then selecting Edit.
 
-2. Then click on the **Alert** tab:
+2. Select the **Alert** tab:
 
-.. image:: ../images/perf-2.png
+.. image:: ../images/perf-2.png 
+   :alt: Switch to the Alert tab to access and configure Grafana dashboard alerts for the current chart.
 
 3. The alert threshold, which will be discussed in the sections below, is the last field under **Conditions** (the one set to 600 in the screenshot above).
 
 See the sections below for how to set the threshold for each individual chart. If you would like to add your own custom alert conditions, configure them here.
 
 .. image:: ../images/perf-3.png
+   :alt: When configuring Grafana dashboard alerts, set custom threshold conditions in the Conditions section of the screen.
 
-4. To enable the notifications for any alerts, click on the **Notification** tab on the left and select **Mattermost Alerts Channel** under **Send to**:
+4. To enable the notifications for any alerts, select the **Notification** tab on the left, then select **Mattermost Alerts Channel** under **Send to**:
 
 .. image:: ../images/perf-4.png
+   :alt: When configuring Grafana dashboard alerts, set notifications for any alerts by switching to the Notification tab, selecting Send to, then selecting by Mattermost Alerts Channel. 
 
 Enter a message if you would like to add more context to the alert.
 
@@ -84,7 +74,7 @@ By default, the alerts are configured to check the average of a chart over the l
 
 The sections below describe each chart in more detail.
 
-CPU Utilization Rate
+CPU utilization rate
 ---------------------
 
 CPU Utilization Rate is fairly straightforward. CPU Utilization Rate tracks the CPU usage of the app servers as a percentage. The maximum percentage is based on the number of CPU cores or vCPUs your app server has. For example, if you have four CPU cores and your app server was at 100% utilization rate on all four cores, the graph would show 400% for that app server.
@@ -94,10 +84,11 @@ It’s best to set the alert threshold based on your average CPU utilization and
 For example, on our community server, we have the threshold set to 15%:
 
 .. image:: ../images/perf-5.png
+   :alt: Example CPU utilization rate metrics for the Mattermost Community Server, where the threshold is set to 15%. System Admins should set the threshold between the maximum CPU usage and the CPU usage observed in metrics.
 
 This value is below our maximum CPU usage and above our average usage at peak times. Therefore, we will get alerts if we begin experiencing unusually high CPU usage.
 
-Memory Usage
+Memory usage
 -------------
 
 Memory Usage tracks the megabytes of RAM that your app servers are using. Set the threshold similar to the CPU Utilization Rate: below maximum available memory and above your average usage during peak times.
@@ -105,6 +96,7 @@ Memory Usage tracks the megabytes of RAM that your app servers are using. Set th
 Here’s how we have the alert set on our Community server: 
 
 .. image:: ../images/perf-6.png
+   :alt: Example memory usage metrics for the Mattermost Community Server, where the threshold is configured similarly to the CPU utilization rate.
 
 Number of Goroutines
 ---------------------
@@ -116,8 +108,9 @@ Set the threshold somewhere above the average number of goroutines you see durin
 Here’s how we have it set on our Community server:
 
 .. image:: ../images/perf-7.png
+   :alt: Example Goroutines metrics for the Mattermost Community Server, where the threshold is configured above the average number of Goroutines observed during peak load times.
 
-Number of API Errors per Second
+Number of API errors per second
 --------------------------------
 
 Any 4xx or 5xx HTTP response status codes are counted as a REST API error. API errors themselves are not necessarily a problem. There are many legitimate reasons for an API error to occur, such as users’ sessions expiring or clients requesting to see if a resource exists and is being given a ``404 Not Found`` response. It is normal to have some API errors that scale with your installation base.
@@ -127,8 +120,9 @@ That said, errors against the REST API can be indicative of deployment and other
 Here’s how it’s set on our Community server:
 
 .. image:: ../images/perf-8.png
+   :alt: Example metrics of the number of API errors per second for the Mattermost Community Server, where it's normal to have some API errors that scale with an installation base, but that can be indicative of deployment issues or other issues.
 
-Mean API Request Time
+Mean API request time
 ----------------------
 
 The Mean API Request Time is the average amount of time a REST API request to the Mattermost app server takes to complete. If an app server starts to perform poorly, you’ll likely see a rise in the mean request time as it takes longer to complete requests. This could also happen if your database can’t sustain the load from the app servers. It may also be indicative of an issue between the app servers and your proxy.
@@ -138,8 +132,9 @@ You’ll want to set the alert threshold a little above what the mean request ti
 Here’s how it’s set on our community server:
 
 .. image:: ../images/perf-9-b.png
+   :alt: Example mean API request time metrics for the Mattermost Community Server, where the alert threshold is configured a bit above the mean request time during peak load times.
 
-Plugin Hooks
+Plugin hooks
 -------------
 
 You can trace hooks and plugin API calls with Prometheus. Below are some examples of hooks and API Prometheus metrics that you may want to be aware of when troubleshooting or monitoring your server's performance.
@@ -171,7 +166,7 @@ You can trace hooks and plugin API calls with Prometheus. Below are some example
   mattermost_plugin_api_time_bucket{api_name="AddUserToChannel",plugin_id="com.mattermost.plugin-incident-response",success="true",le="0.005"} 0
   mattermost_plugin_api_time_bucket{api_name="AddUserToChannel",plugin_id="com.mattermost.plugin-incident-response",success="true",le="0.01"} 0
 
-Other Alerts
+Other alerts
 -------------
 
-If you want more alerts, you can set them up on any of the Grafana charts you'd like. We recommend reviewing custom metrics listed on our `Performance Monitoring feature documentation <https://docs.mattermost.com/scale/performance-monitoring.html#statistics>`_.
+If you want more alerts, you can set them up on any of the Grafana charts you'd like. We recommend reviewing custom metrics listed on our `Performance Monitoring feature documentation </scale/performance-monitoring.html#statistics>`_.

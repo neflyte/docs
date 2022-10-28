@@ -1,22 +1,8 @@
-Email Templates
+Email templates
 ===============
 
-|all-plans| |cloud| |self-hosted|
-
-.. |all-plans| image:: ../images/all-plans-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in Mattermost Free and Starter subscription plans.
-
-.. |cloud| image:: ../images/cloud-badge.png
-  :scale: 30
-  :target: https://mattermost.com/download
-  :alt: Available for Mattermost Cloud deployments.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/allplans-cloud-selfhosted.rst
+  :start-after: :nosearch:
 
 Mattermost has a few email templates that are sent out when a specific event occurs.
 Most of the time these templates do not need to be modified.
@@ -37,7 +23,7 @@ The corresponding strings for each prop can be found in the ``i18n`` folder.
 Available templates
 -------------------
 
-Email Footer
+Email footer
 ~~~~~~~~~~~~
 
 **Purpose**:
@@ -154,7 +140,7 @@ SendSignInChangeEmail
 ~~~~~~~~~~~~~~~~~~~~~
 
 **Purpose**:
-Sent to the user when sign-in method has been changed (i.e. from email to LDAP, etc.)
+Sent to the user when the login method has been changed (i.e. from email to LDAP, etc.)
 
 **Body Props**:
 

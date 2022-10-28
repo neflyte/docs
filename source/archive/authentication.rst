@@ -1,3 +1,4 @@
+:nosearch:
 
 Multi-Factor Authentication
 ---------------------------
@@ -19,9 +20,10 @@ Enabling MFA
 
 This option is enabled by the System Admin by going to **System Console > Authentication > MFA**, then setting **Enable Multi-factor Authentication** to **true**. 
 
-Once enabled, users can opt to use MFA on their account in the `Account Settings <https://docs.mattermost.com/help/settings/account-settings.html#multi-factor-authentication>`__ menu under **Security > Multi-factor Authentication**.
+Once enabled, users can opt to use MFA on their account in the `Account Settings </help/settings/account-settings.html#multi-factor-authentication>`__ menu under **Security > Multi-factor Authentication**.
 
-.. include:: common-disable-mfa.rst 
+.. include:: common-disable-mfa.rst
+  :start-after: :nosearch: 
 
 Enforcing MFA
 ~~~~~~~~~~~~~

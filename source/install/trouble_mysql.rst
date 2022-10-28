@@ -1,17 +1,8 @@
-MySQL Installation Troubleshooting
+MySQL installation troubleshooting
 ==================================
 
-|all-plans| |self-hosted|
-
-.. |all-plans| image:: ../images/all-plans-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in Mattermost Free and Starter subscription plans.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/allplans-selfhosted.rst
+  :start-after: :nosearch:
 
 Before you can run the Mattermost server, you must first install and configure a database. You can start Mattermost by navigating to the ``/opt/mattermost`` directory and entering the command
 ``sudo -u mattermost bin/mattermost``. If the Mattermost server cannot connect to the database, it will fail to start. This section deals with MySQL database issues that you may encounter when you start up Mattermost for the first time.
@@ -34,7 +25,7 @@ If MySQL is not running, review the instructions for installation on your distri
 
   Some of the commands used in this section alter the database. **Use these commands only if your Mattermost installation has failed.** Do not directly manipulate the MySQL database for a working Mattermost installation.
 
-The ``mattermost`` Database
+The ``mattermost`` database
 ---------------------------
 
 The database created during installation is named ``mattermost``. If you fail to create this database or you misname it, you will see an error such as the following when you attempt to start the Mattermost server:
@@ -144,7 +135,7 @@ If the user ``mmuser`` exists, the DataSource element of the ``/opt/mattermost/c
 
 If you correct an error, restart the Mattermost server by navigating to the ``/opt/mattermost`` directory and issuing the command: ``sudo -u mattermost bin/mattermost``.
 
-The User Password
+The user password
 -----------------
 
 Mattermost will fail if you use an incorrect password for ``mmuser``. An incorrect password displays an error message such as the following:
@@ -155,7 +146,7 @@ Mattermost will fail if you use an incorrect password for ``mmuser``. An incorre
     [2017/09/20 17:09:10 EDT] [ERROR] Failed to ping DB retrying in 10 seconds
     err-Error 1045: Access denied for user 'mmuser'@'localhost' (using password: YES)
 
-**The Password in config.json**
+**The password in ``config.json``**
 
 The DataSource element of the ``/opt/mattermost/config/config.json`` file references the ``mmuser`` password. Open this file and search for ``DataSource``. It's value should be:
 
@@ -179,7 +170,7 @@ With a new database installation, the easiest solution for an unknown password i
 
 If you recreate ``mmuser``, ensure that this user has rights to the ``mattermost`` database by following the instructions given in :ref: `mysql_grants`.
 
-Insufficient User Privileges
+Insufficient user privileges
 ----------------------------
 
 If the database exists and the username and password are correct, the ``mmuser`` may not have sufficient rights to access the ``mattermost`` database. If this is the case, you may see an error message such as:
@@ -207,7 +198,7 @@ You can check if the user ``mmuser`` has access to the ``mattermost`` database b
 
 .. _mysql_grants:
 
-**Granting Privileges to mmuser**
+**Granting privileges to mmuser**
 
 If the ``mattermost`` database exists and ``mmuser`` cannot view it, exit from MySQL and then log in again as root. Issue the command ``grant all privileges on mattermost.* to 'mmuser'@'%';`` to grant all rights on ``mattermost`` to ``mmuser``.
 

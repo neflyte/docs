@@ -1,41 +1,32 @@
 .. _ediscovery:
 
-Electronic Discovery
+Electronic discovery
 =====================
 
-|enterprise| |self-hosted|
-
-.. |enterprise| image:: ../images/enterprise-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in the Mattermost Enterprise subscription plan.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/ent-selfhosted.rst
+  :start-after: :nosearch:
 
 Electronic discovery (also known as eDiscovery) refers to a process where where electronic data is searched with the intent to use it as evidence in a legal case.
 
 This page describes how to extract data from Mattermost for eDiscovery. There are three primary methods that can be used to accomplish the goal of extracting user post data from Mattermost:
 
-- `Mattermost Compliance Exports <https://docs.mattermost.com/comply/compliance-export.html>`__
-- `Mattermost RESTful API <https://docs.mattermost.com/comply/electronic-discovery.html#mattermost-restful-api>`__
-- `Mattermost database using standard SQL queries <https://docs.mattermost.com/comply/electronic-discovery.html#mattermost-database>`__
+- `Mattermost Compliance Exports </comply/compliance-export.html>`__
+- `Mattermost RESTful API </comply/electronic-discovery.html#mattermost-restful-api>`__
+- `Mattermost database using standard SQL queries </comply/electronic-discovery.html#mattermost-database>`__
 
 Each of the options is discussed in detail below.
 
 .. note::
   Litigation hold (also known as legal hold) is an extension of eDiscovery where in addition to searching for records, no electronically stored information nor paper documents may be discarded if they may be deemed relevant for a present or future legal case.
 
-Mattermost Compliance Exports
+Mattermost compliance exports
 -----------------------------
 
 Mattermost Enterprise has compliance report export capabilities.
 
 Mattermost can export compliance related data, including the content of messages and who might have seen those messages, in three formats: Actiance XML, Global Relay EML, and generic CSV. Reports can be configured to run on a delay basis and stored in a shared location.
 
-For more information about the exports feature and how to set up reporting, see `our documentation <https://docs.mattermost.com/comply/compliance-export.html>`__.
+For more information about the exports feature and how to set up reporting, see `our documentation </comply/compliance-export.html>`__.
 
 Mattermost RESTful API
 ----------------------
@@ -101,7 +92,7 @@ When the export process is complete (the execution time is based on the number o
 
 When sending the request, you need to get the report ID from the response returned by Mattermost when the report was created. You also need to supply a name to save that file as. In the example above, the file will be saved as ``report-zip.zip``.
 
-Mattermost Database
+Mattermost database
 -------------------
 
 Selecting messages from the Mattermost database using standard SQL is quite easy. If you know the username, the following query can be used to select all messages for the specified user:

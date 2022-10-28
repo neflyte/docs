@@ -1,12 +1,9 @@
-Migrating from OAuth 2.0 to OpenID Connect
-------------------------------------------
-
-OAuth 2.0 is being deprecated and replaced by OpenID Connect. Refer to the product documentation to `convert your existing OAuth service provider configuration <https://docs.mattermost.com/onboard/convert-oauth20-service-providers-to-openidconnect.html>`__ for Google Apps to the OpenID Connect standard.
+:nosearch:
 
 Configuring Google Apps as a Single Sign-On (SSO) service
 ---------------------------------------------------------
 
-Follow these steps to configure Mattermost to use Google as a Single Sign-on (SSO) service for team creation, account creation, and sign-in.
+Follow these steps to configure Mattermost to use Google as a Single Sign-on (SSO) service for team creation, account creation, and login.
 
 .. note::
 

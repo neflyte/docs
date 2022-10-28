@@ -1,22 +1,8 @@
-In-Product Notices
+In-product notices
 ==================
 
-|all-plans| |cloud| |self-hosted|
-
-.. |all-plans| image:: ../images/all-plans-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in Mattermost Free and Starter subscription plans.
-
-.. |cloud| image:: ../images/cloud-badge.png
-  :scale: 30
-  :target: https://mattermost.com/download
-  :alt: Available for Mattermost Cloud deployments.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/allplans-cloud-selfhosted.rst
+  :start-after: :nosearch:
 
 Mattermost in-product notices keep users and administrators informed of the newest product improvements, features, and releases.
 
@@ -29,23 +15,25 @@ Administrator notices
 Administrator notices inform System Admins when a new server version is available, when external dependencies are being deprecated, or when server upgrades are recommended due to ending support life cycles. System Admins may also receive notices about recommended server configuration options to optimize the user experience of their deployment.
 
 .. image:: ../images/notices_admin.png
-
-Administrator notices can be disabled in the **System Console > Notices** page.
+   :alt: An example of an in-product administrator notice announcing that a new server version of Mattermost is available. Admin notices also announce when external dependencies are being deprecated, or when server upgrades or optimizations are recommended.
+   
+Administrator notices can be disabled in the **System Console > Site Configuration > Notices** page.
 
 End user notices
 ----------------
 
-End user notices are used to inform users and Admins of new feature enhancements and when new desktop versions are available. They can be disabled in **System Console > Notices**.
+End user notices are used to inform users and Admins of new feature enhancements and when new desktop versions are available. They can be disabled in **System Console > Site Configuration > Notices**.
 
 .. image:: ../images/notices.png
+   :alt: An example of an end user in-product notice announcing that a new Mattermost Desktop App version is available. End user notices announce when new features and versions are available, and can be disabled.
 
-Frequently Asked Questions (FAQs)
+Frequently asked questions (FAQs)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Are notices enabled by default?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Notices are enabled by default for all Mattermost users. System Admins may choose to disable administrator or end user notices in **System Console > Notices**.
+Notices are enabled by default for all Mattermost users. System Admins may choose to disable administrator or end user notices in **System Console > Site Configuration > Notices**.
 
 Will I still receive notices if my server is air-gapped?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -68,8 +56,10 @@ Admin Advisor notices are designed to provide guidance and assist in choosing fe
 When these notices are triggered, System Admins receive a bot message notification and, for larger instances, a dismissable daily banner with quick access to contact support. The notices are triggered based on usage such as the number of registered users, posts, or channels in your deployment reaching a predefined threshold.
 
 .. image:: ../images/mattermost_admin_advisor_banner.png
+   :alt: An example of an Admin Advisor notice. Admin Advisor notices provide guidance as your deployment scales in size. Admin Advisor notices are disabled from Mattermost v5.35.
 
 .. image:: ../images/mattermost_admin_advisor_bot.png
+   :alt: An example of an Admin Advisor notice that includes an option for System Admins to contact Mattermost Support. Admin Advisor notices are disabled from Mattermost v5.35.
 
 System Admins can optionally contact support for additional assistance. There are also links to useful resources for user management and provisioning to support large systems.
 
@@ -82,4 +72,4 @@ The Admin Advisor notices are run on a schedule based on specific triggers.
 - Selecting **Acknowledge** in the Admin Advisor banner closes the advisory and does not send your details to Mattermost.
 - Closing the notification bot removes the conversation from your Direct Messages list.
 
-We welcome your feedback on this feature. Please visit `our forum <https://forum.mattermost.org/t/new-admin-advisor-notifications-in-mattermost-v5-26/10263/6>`_ if you have any questions or feedback.
+We welcome your feedback on this feature. Please visit `our forum <https://forum.mattermost.com/t/new-admin-advisor-notifications-in-mattermost-v5-26/10263/6>`_ if you have any questions or feedback.

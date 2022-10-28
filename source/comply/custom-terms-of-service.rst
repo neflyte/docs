@@ -1,30 +1,16 @@
 .. _custom-terms-of-service:
 
-Custom Terms of Service
+Custom terms of service
 =======================
 
-|enterprise| |cloud| |self-hosted|
-
-.. |enterprise| image:: ../images/enterprise-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in the Mattermost Enterprise subscription plan.
-
-.. |cloud| image:: ../images/cloud-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Cloud deployments.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/ent-cloud-selfhosted.rst
+  :start-after: :nosearch:
 
 *Available in legacy Mattermost Enterprise Edition E20*
 
 System Admins can outline custom Terms of Service for their team members to accept before they can access Mattermost on web, desktop, or mobile.
 
-Configuring Terms of Service
+Configuring terms of service
 ----------------------------
 
 To enable custom terms of service:
@@ -49,7 +35,7 @@ What happens if I update my terms of service text?
 
 There will be no impact to your end users. Users will simply be required to accept the new terms on next login or page refresh.
 
-What happens if a user doesn't accept the Terms of Service?
+What happens if a user doesn't accept the terms of service?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Users won't be able to log in if they don't accept the Terms of Service.

@@ -1,5 +1,9 @@
-Configuring Mattermost Server
------------------------------
+:orphan:
+:nosearch:
+.. This page is intentionally not accessible via the LHS navigation pane because it's common content included on other docs pages.
+
+Configure Mattermost server
+----------------------------
 
 Create the System Admin user and set up Mattermost for general use.
 
@@ -9,7 +13,7 @@ Create the System Admin user and set up Mattermost for general use.
 
 3. To open the System Console, select the Product menu in the top-left corner of the navigation panel, then select **System Console**.
 
-4. Set the Site URL:
+4. Set the site URL:
 
   * Open **System Console > Environment > Web Server**.
   * In the **Site URL** field, set the URL that users point their browsers at. For example, *https://mattermost.example.com*. If you're using HTTPS, make sure that you set up TLS, either on Mattermost server or on a proxy.
@@ -47,6 +51,4 @@ Create the System Admin user and set up Mattermost for general use.
 
 8. Review and configure any other settings that may be applicable.
 
-9. Restart Mattermost.
-
-  ``sudo systemctl restart mattermost``
+9. Restart Mattermost by running ``sudo systemctl restart mattermost``.

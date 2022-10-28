@@ -1,30 +1,33 @@
 Mattermost Playbooks
 ====================
 
+.. include:: ../_static/badges/allplans-cloud-selfhosted.rst
+  :start-after: :nosearch:
+
 Mattermost Playbooks are pre-built, configurable checklists that define a repeatable process for teams to achieve specific and predictable outcomes. With Playbooks, development teams can orchestrate prescribed workflows and define, streamline, and document complex, recurring operations. Playbooks help you stay in command with integrated communication, collaboration, and status dashboards to manage your entire workflow lifecycle.
     
 .. image:: ../images/Playbooks_Hero.png
+   :alt: An example of the Mattermost Playbooks screen that includes active run details in the right-hand pane.
    
 This Mattermost Playbooks User Guide is for anyone who needs help using Mattermost workflow capabilities.
-   
-The Basics
-----------
 
 .. toctree::
    :hidden:
 
    Overview </playbooks/overview>
-   Navigate Mattermost </playbooks/navigating-mattermost>
-   Get Started </playbooks/getting-started>
-   Plan Playbooks </playbooks/setting-up-playbooks>
-   Run Playbooks </playbooks/running-playbooks>
-   Notifications and Updates </playbooks/notifications-and-updates>
-   Retrospectives </playbooks/refining-and-improving>
+   Customize a playbook </playbooks/customize-a-playbook>
+   Customize a run <playbooks/customize-a-run>
+   Notifications and updates </playbooks/notifications-and-updates>
+   Metrics and goals </playbooks/metrics-and-goals>
+   Permissions </playbooks/playbook-permissions>
+   Reuse and share playbooks </playbooks/reusing-and-sharing-playbooks>
+   Interact with playbooks </playbooks/interact-with-playbooks>
    
-* :doc:`Playbooks Overview </playbooks/overview>` - Learn about Mattermost Playbooks features.
-* :doc:`Navigate Mattermost </playbooks/navigating-mattermost>` - Find your way around Mattermost.
-* :doc:`Get Started </playbooks/getting-started>` - Enable Playbooks for your Mattermost instance and learn how to set them up.
-* :doc:`Plan Playbooks </playbooks/setting-up-playbooks>` - Create checklists, templates, and actions, for your Playbooks and manage permissions for your team.
-* :doc:`Run Playbooks </playbooks/running-playbooks>` - Initiate Playbooks, make announcements, and get information about your workflows.
-* :doc:`Notifications and Updates </playbooks/notifications-and-updates>` - Keep track of all your active runs and tasks.
-* :doc:`Retrospectives </playbooks/refining-and-improving>` - Use retrospectives to improve your workflows and provide detailed insight into your Playbooks.
+* :doc:`Playbooks overview </playbooks/overview>` - Learn about Mattermost Playbooks features.
+* :doc:`Customize a playbook </playbooks/customize-a-playbook>` - Customize a playbook for successful runs.
+* :doc:`Customize a run </playbooks/customize-a-run>` - Edit triggers and actions in an active run.
+* :doc:`Notifications and updates </playbooks/notifications-and-updates>` - Keep track of all your active runs and tasks.
+* :doc:`Metrics and goals </playbooks/metrics-and-goals>` - Use retrospectives to improve your workflows and provide detailed insight into your Playbooks.
+* :doc:`Permissions </playbooks/playbook-permissions>` - Configure and granulate access controls for playbooks.
+* :doc:`Reuse and share playbooks </playbooks/reusing-and-sharing-playbooks>` - Reuse and share playbooks with your organization.
+* :doc:`Interact with playbooks </playbooks/interact-with-playbooks>` - Interact with playbooks using slash commands and the REST API. 

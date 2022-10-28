@@ -1,21 +1,12 @@
 ..  _outbound_proxy:
 
-Using an Outbound Proxy
+Using an outbound proxy
 =======================
 
-|all-plans| |self-hosted|
+.. include:: ../_static/badges/allplans-selfhosted.rst
+  :start-after: :nosearch:
 
-.. |all-plans| image:: ../images/all-plans-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in Mattermost Free and Starter subscription plans.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
-
-In some scenarios, you may wish to use Mattermost behind a proxy. This can be used to do things such as monitoring outbound traffic from Mattermost or controlling which websites can appear in link previews and other embedded content. If you only want to use a proxy for images, the `image proxy <https://docs.mattermost.com/deploy/image-proxy.html>`__ is also an option.
+In some scenarios, you may wish to use Mattermost behind a proxy. This can be used to do things such as monitoring outbound traffic from Mattermost or controlling which websites can appear in link previews and other embedded content. If you only want to use a proxy for images, the `image proxy </deploy/image-proxy.html>`__ is also an option.
 
 Configuration
 -------------
@@ -38,7 +29,7 @@ The ``NO_PROXY`` environment variable can be set to prevent certain requests fro
 
 When a domain name is specified, the domain and all of its subdomains are matched, however a domain name with a leading ``.`` only matches the subdomains. For example, ``example.com`` matches both ``example.com`` and ``sub.example.com`` while ``.example.com`` only matches the latter.
 
-Sample Configuration
+Sample configuration
 --------------------
 
 To set these environment variables while running the Mattermost server via ``systemd``, modify the ``mattermost.service`` like this:

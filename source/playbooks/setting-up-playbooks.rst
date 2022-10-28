@@ -1,22 +1,8 @@
-Create a Playbook
+Create a playbook
 ==================
 
-|all-plans| |cloud| |self-hosted|
-
-.. |all-plans| image:: ../images/all-plans-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in Mattermost Free and Starter subscription plans.
-
-.. |cloud| image:: ../images/cloud-badge.png
-  :scale: 30
-  :target: https://mattermost.com/download
-  :alt: Available for Mattermost Cloud deployments.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/allplans-cloud-selfhosted.rst
+  :start-after: :nosearch:
   
 Playbooks help streamline and manage complex processes while decreasing the risk of forgotten steps or tasks. They also support tool integration, status updates in a dedicated channel, and can be edited on the fly. When a playbook run is finished, you can review the entire run to assess any areas of improvement for the next run.
 
@@ -77,7 +63,7 @@ Keywords
 When you use the **Keywords** action any team member who has access to the playbook and who uses one of the listed keywords will see a message like this:
 
 .. image:: ../images/Playbook-keyword-monitoring.png
-   :alt: Keyword notification.
+   :alt: Set up keyword triggers to run playbooks when specified keywords are detected in Channel posts.
 
 If you find your keywords result in too many false positives, consider refining your list and also consider that URLs used by run members may also contain monitored keywords.
 
@@ -90,7 +76,7 @@ Webhooks
 Set permissions
 ---------------
 
-1. Go to **Product menu > Playbooks**, and then select **Permissions**.
+1. Go to **product menu > Playbooks**, and then select **Permissions**.
 
  * **Channel access**: Decide whether the automatically-created channel should be Public or Private within the team.
  * **Playbook access**: Share this playbook with other members of the team to allow them to use the playbook to start a run, as well as edit the playbook.
@@ -100,7 +86,7 @@ Edit a playbook
 
 You can change a playbook's configuration at any time, but changes will only be applied to future incidents. Ongoing or ended incidents previously started from that playbook remain unchanged.
 
-1. Go to **Product menu > Playbooks**.
+1. Go to **product menu > Playbooks**.
 2. Find the playbook to be edited.
 
  * Only playbooks of which you are a member are listed. System Admins have unrestricted access to all playbooks on the team.
@@ -111,3 +97,10 @@ You can change a playbook's configuration at any time, but changes will only be 
  * To access the playbook dashboard, select the hyperlinked playbook name.
 
 4. Configure the playbook the same way a playbook is created or edited.
+
+Copying and reusing playbooks
+-----------------------------
+
+Playbooks are repeatable workflows and sometimes it's easier to copy and improve rather than start from scratch. You can do this by duplicating a playbook in the **Playbooks** screen. Select the **...** under **Actions** and then select **Duplicate**. The copied playbook will have **Copy of** appended to its original name which you can edit.
+
+To import a playbook, go to the **Playbooks** screen, select **Import**. Choose the team you're importing to, then select the JSON file. You can also export any playbook to JSON to easily share with other Mattermost servers.

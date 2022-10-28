@@ -1,23 +1,14 @@
 ..  _smtp-email-setup:
 
-SMTP Email Setup
+SMTP email setup
 ================
 
-|all-plans| |self-hosted|
-
-.. |all-plans| image:: ../images/all-plans-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in Mattermost Free and Starter subscription plans.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/allplans-selfhosted.rst
+  :start-after: :nosearch:
 
 To run in production, Mattermost requires SMTP email to be enabled for email notifications and password reset for systems using email-based authentication.
 
-How to Enable Email
+How to enable email
 -------------------
 
 To enable email, configure an SMTP email service as follows:
@@ -82,7 +73,7 @@ To enable email, configure an SMTP email service as follows:
 
       1.  **Enable Email Invitations:** ``true``
 
-Sample SMTP Settings
+Sample SMTP settings
 --------------------
 
 Amazon SES
@@ -139,7 +130,7 @@ Office365/Outlook
 Troubleshooting SMTP
 --------------------
 
-TLS/STARTTLS Requirements 
+TLS/STARTTLS requirements 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you fill in **SMTP Username** and **SMTP Password** then you must set **Connection Security** to **TLS** or to **STARTTLS**
@@ -179,11 +170,7 @@ Checking your SMTP server is reachable
        250-PIPELINING
        250 8BITMIME
        
-
 .. note:: 
    
-   As we're not installing telnet by default on the official docker images you either need to use ``ping`` on those or install telnet yourself either directly or by modifying the Dockerfile.
-
-.. note::
-   
-   For further assistance, review the `Troubleshooting forum <https://forum.mattermost.org/c/trouble-shoot>`__ for previously reported errors, or `join the Mattermost user community for troubleshooting help <https://mattermost.com/ask-mattermost-community>`__. To submit an improvement or correction to this page, select **Edit** in the top-right corner of the page.
+   - As we're not installing telnet by default on the official docker images, you either need to use ``ping`` on those or install telnet yourself either directly or by modifying the Dockerfile.
+   - For further assistance, review the `Troubleshooting forum <https://forum.mattermost.com/c/trouble-shoot>`__ for previously reported errors, or `join the Mattermost user community for troubleshooting help <https://mattermost.com/ask-mattermost-community>`__. To submit an improvement or correction to this page, select **Edit** in the top-right corner of the page.

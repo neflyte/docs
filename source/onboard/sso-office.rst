@@ -1,36 +1,19 @@
 Office 365 Single Sign-On
 =========================
 
-|enterprise| |professional| |cloud| |self-hosted|
-
-.. |enterprise| image:: ../images/enterprise-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in the Mattermost Enterprise subscription plan.
-
-.. |professional| image:: ../images/professional-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in the Mattermost Professional subscription plan.
-
-.. |cloud| image:: ../images/cloud-badge.png
-  :scale: 30
-  :target: https://mattermost.com/download
-  :alt: Available for Mattermost Cloud deployments.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/ent-pro-cloud-selfhosted.rst
+  :start-after: :nosearch:
 
 *Available in legacy Mattermost Enterprise Edition E20*
 
 .. include:: common-sso-office365.rst
+  :start-after: :nosearch:
 
 Configure Mattermost ``config.json`` for Office 365 SSO
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|self-hosted|
+.. include:: ../_static/badges/selfhosted-only.rst
+  :start-after: :nosearch:
 
 Instead of using the System Console, you can add the Office 365 settings directly to the ``config.json`` file on your Mattermost server.
 
@@ -50,4 +33,4 @@ Instead of using the System Console, you can add the Office 365 settings directl
         "DirectoryId": "common"
   }
 
-3. Save your changes, then restart your Mattermost server. After the server restarts, users must change their sign-in method before they can sign in with Office 365.
+3. Save your changes, then restart your Mattermost server. After the server restarts, users must change their login method before they can log in with Office 365.

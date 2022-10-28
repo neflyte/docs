@@ -1,4 +1,6 @@
-Mattermost Source Available License Questions
+:orphan:
+
+Mattermost Source Available License questions
 =============================================
 
 What is the Mattermost Source Available License?
@@ -18,7 +20,7 @@ In all cases, any third party components remain licensed under their original li
 An example directory layout, using an Enterprise license, is shown below:
 
 .. image:: ../images/source-available-license.png
-
+   :alt: An example directory layout shows how Enterprise subscription plan restrictions apply to Mattermost source code based on where the Mattermost Source Available license file appears in the Mattermost deployment directory.
 Why are you changing the licensing model?
 -----------------------------------------
 
@@ -32,7 +34,7 @@ As we add enterprise-only functionality, we will update the license on affected 
 To which repositories does this apply?
 --------------------------------------
 
-We plan to apply this license to the enterprise directories of our `Jira <https://github.com/mattermost/mattermost-plugin-ee-jira>`__, `Microsoft Calendar <https://github.com/mattermost/mattermost-plugin-mscalendar>`__, and `Microsoft Teams Meetings <https://github.com/mattermost/mattermost-plugin-msteams-meetings>`__ plugins. We also intend to release `Playbooks <https://docs.mattermost.com/guides/playbooks.html>`__ and `Channel Export <https://github.com/mattermost/mattermost-plugin-channel-export>`__ plugins under the Mattermost Source Available License. New, Mattermost-authored plugins will generally be released under the Mattermost Source Available License. When we update the licenses, we will release a new version and note the change in the ``README.md`` file of the GitHub repository and any release notes.
+We plan to apply this license to the enterprise directories of our `Jira <https://github.com/mattermost/mattermost-plugin-jira>`__, `Microsoft Calendar <https://github.com/mattermost/mattermost-plugin-mscalendar>`__, and `Microsoft Teams Meetings <https://github.com/mattermost/mattermost-plugin-msteams-meetings>`__ plugins. We also intend to release `Playbooks </guides/playbooks.html>`__ and `Channel Export <https://github.com/mattermost/mattermost-plugin-channel-export>`__ plugins under the Mattermost Source Available License. New, Mattermost-authored plugins will generally be released under the Mattermost Source Available License. When we update the licenses, we will release a new version and note the change in the ``README.md`` file of the GitHub repository and any release notes.
 
 We expect to keep plugins without an enterprise component under our open source license. No licensing changes are planned to non-plugin repositories, such as `mattermost-server <https://github.com/mattermost/mattermost-server>`__ or `mattermost-webapp <https://github.com/mattermost/mattermost-webapp>`__.
 
@@ -46,12 +48,12 @@ Can I still contribute?
 
 Yes, we continue to welcome all contributions. Mattermost may select some contributions as enterprise features and license them under the Mattermost Source Available License. We will aim to communicate such decisions as early as possible in the contribution process.
 
-As with all Mattermost repositories, you will still need to sign the `Mattermost CLA <https://mattermost.org/mattermost-contributor-agreement/>`__. We will not accept contributions without signing the Mattermost CLA.
+As with all Mattermost repositories, you will still need to sign the `Mattermost CLA <https://mattermost.com/contribute/>`__. We will not accept contributions without signing the Mattermost CLA.
 
-Do I need to re-sign the `Mattermost CLA <https://mattermost.org/mattermost-contributor-agreement/>`__?
+Do I need to re-sign the `Mattermost CLA <https://mattermost.com/contribute/>`__?
 -------------------------------------------------------------------------------------------------------
 
-No, if you have already signed the `Mattermost CLA <https://mattermost.org/mattermost-contributor-agreement/>`__, you do not need to sign it again.
+No, if you have already signed the `Mattermost CLA <https://mattermost.com/contribute/>`__, you do not need to sign it again.
 
 Can I compile your plugins by myself?
 -------------------------------------

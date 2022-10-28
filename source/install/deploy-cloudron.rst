@@ -2,7 +2,9 @@
 
 .. _deploy-cloudron:
 
-Deploy Mattermost on Cloudron (Unofficial)
+.. This page is intentionally NOT accessible from the LHS, and is no longer maintained in this repository. Unofficial content has moved to the User Forum.
+
+Deploy Mattermost on Cloudron (unofficial)
 ==========================================
 
 Unofficial, community-maintained guides for deploying Mattermost on Cloudron.

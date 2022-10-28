@@ -1,17 +1,8 @@
-Using Sockets for Database
+Using sockets for database
 ==========================
 
-|all-plans| |self-hosted|
-
-.. |all-plans| image:: ../images/all-plans-badge.png
-  :scale: 30
-  :target: https://mattermost.com/pricing
-  :alt: Available in Mattermost Free and Starter subscription plans.
-
-.. |self-hosted| image:: ../images/self-hosted-badge.png
-  :scale: 30
-  :target: https://mattermost.com/deploy
-  :alt: Available for Mattermost Self-Hosted deployments.
+.. include:: ../_static/badges/allplans-selfhosted.rst
+  :start-after: :nosearch:
 
 Mattermost requires a database back-end. If you plan to run it on the machine,
 install MySQL or PostgreSQL as the database. In this document let's understand how
@@ -84,7 +75,7 @@ With Unix socket
 
   .. code-block:: bash
 
-     sudo -u postgres createuser mattermost
+     sudo -u postgres createdb -O mattermost mattermostdb
 
 - Setup the Unix socket by adding the following line to ``/var/lib/postgres/data/pg_hba.conf``:
 
@@ -98,8 +89,7 @@ With Unix socket
 
   .. code-block:: bash
 
-     sudo -u mattermost psql --dbname=mattermostdb --username=mattermost
-
+     sudo -u mattermost psql --dbname=mattermostdb
 
 Configuring Mattermost
 ----------------------

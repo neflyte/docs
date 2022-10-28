@@ -1,11 +1,15 @@
+:nosearch:
+.. This page is intentionally not accessible via the LHS navigation pane because it's common content included on other docs pages.
+
 .. _install-ubuntu-2004-mysql:
 
-Installing MySQL Database Server
---------------------------------
+Install MySQL database server
+------------------------------
 
 Install and set up the database for use by the Mattermost server. You can install either MySQL or PostgreSQL.
 
-**To install MySQL on Ubuntu Server 20.04:**
+Install MySQL on Ubuntu Server 20.04
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Log into the server that will host the database, and open a terminal window.
 

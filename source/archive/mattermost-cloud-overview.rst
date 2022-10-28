@@ -1,3 +1,4 @@
+:nosearch:
 
 Mattermost Cloud Overview
 =========================
@@ -21,7 +22,7 @@ To get started with Mattermost Cloud Professional, visit https://mattermost.com/
 Mattermost Cloud Enterprise
 ---------------------------
 
-Mattermost Cloud Enterprise offers the isolation, security, and control of self-hosted editions but without the burden of managing deployment, maintaining uptime, or applying upgrades. Mattermost Cloud Enterprise offers all chat and administration features, integrated DevOps workflows, provides a 99.0% financially-backed guaranteed uptime, and enterprise-grade support.
+Mattermost Cloud Enterprise offers the isolation, security, and control of self-hosted editions but without the burden of managing deployment, maintaining uptime, or applying upgrades. Mattermost Cloud Enterprise offers all chat and administration features, integrated DevOps workflows, and enterprise-grade support.
   
 Every Mattermost Cloud Enterprise instance is deployed in a private environment within an AWS VPC dedicated to a single customer. Within that VPC, all the required resources to run, monitor, and administer Mattermost are deployed in isolation. These resources include a dedicated RDS Aurora database cluster and a dedicated Kubernetes cluster, deployed across multiple Availability Zones and managed by Kubernetes experts.
 
@@ -70,7 +71,7 @@ Mattermost Cloud Enterprise is deployed in a private environment within an AWS V
 Is Mattermost Cloud Enterprise a dedicated instance run on AWS systems?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Yes, Mattermost Cloud Enterprise is a dedicated Mattermost environment running in a dedicated AWS account with separate infrastructure for that customer specifically, i.e. separate database, separate VMs, separate Kubernetes cluster.
+Mattermost Cloud Enterprise can be deployed as a dedicated Mattermost environment running with separate infrastructure for your requirements (e.g., separate database, separate VMs, separate Kubernetes cluster). Please contact Mattermost Sales for more information on this option.
 
 How is customer data in Mattermost Cloud Enterprise encrypted?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
