@@ -5,11 +5,8 @@ name = "pypi"
 
 [dev-packages]
 #
-# Amazon AWS Universal CLI environment (https://aws.amazon.com/cli/)
-# Release notes: https://github.com/aws/aws-cli/blob/develop/CHANGELOG.rst
-# Repo: https://github.com/aws/aws-cli
-#
 # PyTest testing framework (https://docs.pytest.org/en/7.2.x/)
+# Repo: https://github.com/pytest-dev/pytest
 pytest = "==7.2.0"
 
 [packages]
