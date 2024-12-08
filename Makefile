@@ -12,7 +12,7 @@ endif
 
 #
 # You can set these variables from the command line, and also
-# from the environment for the last three.
+# from the environment for the last four.
 SOURCEDIR       = source
 BUILDDIR        = build
 SPHINXOPTS      ?= -j auto
@@ -69,10 +69,10 @@ endif
 linkcheck:
 ifeq ($(OS),Windows_NT)
 	@IF NOT EXIST $(BUILDDIR) MD $(BUILDDIR)
-	@$(SPHINXBUILD) -M $@ -D exclude_patterns=archive\*,process\* "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) -w "$(WARNINGSFILE)" 2>NUL
+	@$(SPHINXBUILD) -M $@ -D exclude_patterns=archive\*,process\* "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) -w "$(WARNINGSFILE)"
 else
 	@mkdir -p "$(BUILDDIR)"
-	@$(SPHINXBUILD) -M $@ -D exclude_patterns=archive/*,process/* "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) 2>>"$(WARNINGSFILE)"
+	@$(SPHINXBUILD) -M $@ -D exclude_patterns=archive/*,process/* "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) -w "$(WARNINGSFILE)"
 endif
 
 
@@ -93,8 +93,8 @@ endif
 %: Makefile
 ifeq ($(OS),Windows_NT)
 	@IF NOT EXIST $(BUILDDIR) MD $(BUILDDIR)
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) -w "$(WARNINGSFILE)" 2>NUL
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) -w "$(WARNINGSFILE)"
 else
 	@mkdir -p "$(BUILDDIR)"
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS2) $(O) 2>>"$(WARNINGSFILE)"
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS2) $(O) -w "$(WARNINGSFILE)"
 endif
